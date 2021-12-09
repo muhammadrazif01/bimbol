@@ -44,6 +44,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle = TextStyle(
       fontFamily: 'Raleway', fontSize: 30, fontWeight: FontWeight.w900);
+  // ignore: unused_field
   static const List<Widget> _widgetOptions = <Widget>[
     // Text untuk bagian mainpage
     Text(
@@ -80,7 +81,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         title: const Text(
           'BIMBOL\nBimbel di Masa Pandemi',
           textAlign: TextAlign.center,
-          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
         ),
         centerTitle: true,
       ),
