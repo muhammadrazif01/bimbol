@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       ),
 
       // Set home untuk constructor MyStatefulWidget()
-      home: MyStatefulWidget(),
+      home: const MyStatefulWidget(),
     );
   }
 }
@@ -90,14 +90,14 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
       // Set body (sebagian dari kode ini terinspirasi oleh https://youtu.be/4wS5LdXJgEA)
       body: Container(
-          padding: EdgeInsets.all(12),
+          padding: const EdgeInsets.all(12),
           child: Stack(fit: StackFit.expand, children: [
             buildBackground(),
             Center(
               child: buildCenterText(),
             ),
             Align(
-              alignment: Alignment(0.0, 1),
+              alignment: const Alignment(0.0, 1),
               child: buildLikeFB(),
             ),
             Positioned(
@@ -135,14 +135,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   // Buat background
   Widget buildBackground() => ClipRRect(
         borderRadius: BorderRadius.circular(24),
-        child: Container(
-          //color: Colors.black,
-          child: Opacity(
-            opacity: 0.8,
-            child: Image.asset(
-              'assets/image/adobeproject1.png',
-              fit: BoxFit.fitHeight,
-            ),
+        child: Opacity(
+          opacity: 0.8,
+          child: Image.asset(
+            'assets/image/adobeproject1.png',
+            fit: BoxFit.fitHeight,
           ),
         ),
       );
@@ -151,7 +148,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   Widget buildCenterText() => Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
+          const Text(
             'BIMBOL',
             style: TextStyle(
               fontWeight: FontWeight.bold,
@@ -161,8 +158,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           ),
           const SizedBox(height: 16),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 42),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 42),
+            child: const Text(
               'Sebuah Solusi Mudah dan Aman di Masa Pandemi',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
@@ -178,12 +175,12 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   // Build like us on FB
   Widget buildLikeFB() => Container(
         color: Colors.white,
-        padding: EdgeInsets.symmetric(vertical: 12),
+        padding: const EdgeInsets.symmetric(vertical: 12),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: const [
             Icon(Icons.favorite, color: Colors.red),
-            const SizedBox(width: 8),
+            SizedBox(width: 8),
             Text(
               'Likes Us on Facebook!',
               style: TextStyle(
@@ -198,7 +195,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
   // Build logo UI
   Widget buildLogo() => IconButton(
-        icon: ImageIcon(
+        icon: const ImageIcon(
           AssetImage('assets/image/logoui.png'),
           color: Colors.yellow,
         ),
