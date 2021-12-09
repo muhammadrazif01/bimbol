@@ -27,19 +27,19 @@ Untuk menyelesaikan permasalahan tersebut, kami berpikir untuk membuat **BIMBOL,
 
 ## 📚 Daftar Modul
 - Pendaftaran Guru (oleh Adella Rakha Amadea)
-Halaman yang berisi form untuk registrasi untuk mendaftar sebagai pengajar bimbingan belajar. Setelah registrasi berhasil, maka akan ditampilkan halaman yang berisi profil pengajar serta nantinya bisa dilakukan edit pada profil.
+> Halaman yang berisi form untuk registrasi untuk mendaftar sebagai pengajar bimbingan belajar. Setelah registrasi berhasil, maka akan ditampilkan halaman yang berisi profil pengajar serta nantinya bisa dilakukan edit pada profil.
 - Pendaftaran Siswa (oleh Ardanisa Rachma)
-Halaman yang berisi form untuk registrasi untuk mendaftar sebagai siswa bimbingan belajar. Setelah registrasi berhasil, maka akan otomatis login dan ditampilkan welcome page yang hanya dapat diakses apabila telah login
+> Halaman yang berisi form untuk registrasi untuk mendaftar sebagai siswa bimbingan belajar. Setelah registrasi berhasil, maka akan otomatis login dan ditampilkan welcome page yang hanya dapat diakses apabila telah login
 - Home Page dan Login (oleh Muhammad Razif Firmansyah)
-Halaman awal yang menampilkan informasi umum aplikasi, menampilkan navigasi dengan link pada halaman lainnya, serta akses untuk login
+> Halaman awal yang menampilkan informasi umum aplikasi, menampilkan navigasi dengan link pada halaman lainnya, serta akses untuk login
 - Booking guru (oleh Mohammad Bryan Mahdavikhia)
-Halaman akan menampilkan daftar profil pengajar, lalu siswa dapat memilih pengajar yang diinginkan. Setelahnya, akan ditampilkan informasi kontak pengajar untuk kelanjutan mekanisme  pembelajaran
+> Halaman akan menampilkan daftar profil pengajar, lalu siswa dapat memilih pengajar yang diinginkan. Setelahnya, akan ditampilkan informasi kontak pengajar untuk kelanjutan mekanisme  pembelajaran
 - Jadwal (oleh Muhammad Halif)
-Siswa dapat memilih jadwal pembelajaran sesuai slot yang ada. Ketika sudah memilih, akan ditampilkan halaman jadwal yang telah dipilih oleh siswa dan nantinya dapat dilakukan edit apabila terdapat jadwal yang ingin diubah
+> Siswa dapat memilih jadwal pembelajaran sesuai slot yang ada. Ketika sudah memilih, akan ditampilkan halaman jadwal yang telah dipilih oleh siswa dan nantinya dapat dilakukan edit apabila terdapat jadwal yang ingin diubah
 - Forum (oleh Markus Leonard Wijaya)
-Siswa dapat bertanya atau mendiskusikan  materi atau soal yang kurang dipahami pada forum diskusi kepada pengajar atau siswa lainnya
+> Siswa dapat bertanya atau mendiskusikan  materi atau soal yang kurang dipahami pada forum diskusi kepada pengajar atau siswa lainnya
 - Testimoni (oleh Mutiara Azzahra)
-Pada halaman ini, siswa yang sudah terdaftar dapat mengisi form testimoni bimbingan belajar yang nantinya akan ditampilkan pada halaman dashboard
+> Pada halaman ini, siswa yang sudah terdaftar dapat mengisi form testimoni bimbingan belajar yang nantinya akan ditampilkan pada halaman dashboard
 
 ## 🖥️ Integrasi dengan Web Service
 - Menggunakan library Dart http untuk pengimplementasi Cookie-based authentication 
