@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pbpbimbol/forum/models.dart';
 
 import '../util.dart';
 
@@ -18,15 +17,15 @@ class _CreatePageState extends State<CreatePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Buat Forum"),
+        title: const Text("Buat Forum"),
       ),
       body: Column(
         children: [
-          Text("Judul"),
+          const Text("Judul"),
           TextField(
             controller: judulController,
           ),
-          Text("description"),
+          const Text("description"),
           TextField(
             controller: descController,
             maxLines: 10,
@@ -47,10 +46,10 @@ class _CreatePageState extends State<CreatePage> {
                     ));
                   }
                 } catch (err) {
-                  print("ada error");
+                  // print("ada error");
                 }
               },
-              child: Text("Buat Forum"))
+              child: const Text("Buat Forum"))
         ],
       ),
     );

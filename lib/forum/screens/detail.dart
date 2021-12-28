@@ -1,8 +1,6 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:pbpbimbol/forum/util.dart';
 import 'package:pbpbimbol/forum/models.dart';
-import 'package:pbpbimbol/forum/widgets/kartu.dart';
 import 'package:pbpbimbol/forum/widgets/replies.dart';
 
 class Detail extends StatefulWidget {

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pbpbimbol/forum/models.dart';
 
-import '../util.dart';
-
 class Replies extends StatefulWidget {
   final int id;
   final String desc;
@@ -20,9 +18,10 @@ class _RepliesState extends State<Replies> {
   @override
   Widget build(BuildContext context) {
     List<Widget> cildren = [
-      Text(widget.desc, style: TextStyle(color: Colors.white70)),
+      Text(widget.desc, style: const TextStyle(color: Colors.white70)),
       Text('by ${widget.user}',
-          style: TextStyle(color: Colors.white70, fontStyle: FontStyle.italic)),
+          style: const TextStyle(
+              color: Colors.white70, fontStyle: FontStyle.italic)),
     ];
     cildren.addAll(List.generate(widget.replies.length, (index) {
       if (widget.replies[index].parent == widget.id) {

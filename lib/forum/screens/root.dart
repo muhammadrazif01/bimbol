@@ -64,7 +64,7 @@ class _ForumRootState extends State<ForumRoot> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => CreatePage()),
+            MaterialPageRoute(builder: (context) => const CreatePage()),
           );
         },
         child: const Icon(Icons.add),

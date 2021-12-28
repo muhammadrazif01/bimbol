@@ -14,14 +14,12 @@ class Kartu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(judul);
     return Center(
       child: Card(
-        color: Color(0xff1f2251),
+        color: const Color(0xff1f2251),
         child: InkWell(
           splashColor: Colors.blue.withAlpha(30),
           onTap: () {
-            print('Card tapped.');
             Navigator.push(
               context,
               MaterialPageRoute(
@@ -45,7 +43,7 @@ class Kartu extends StatelessWidget {
                     height: 10,
                   ),
                   Text(
-                    'created by ${author} at ${created.substring(0, 10)} ${created.substring(11, 16)}',
+                    'created by $author at ${created.substring(0, 10)} ${created.substring(11, 16)}',
                     style: const TextStyle(
                       fontSize: 13.0,
                       fontFamily: 'DancingScript1',
