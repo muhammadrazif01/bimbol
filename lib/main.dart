@@ -3,7 +3,7 @@
 
 // Import material package (very important!)
 import 'package:flutter/material.dart';
-import 'package:pbpbimbol/regisSiswa/screens/register_siswa.dart';
+import 'forum/screens/root.dart' as forum;
 
 // Run MyApp as main function
 void main() => runApp(const MyApp());
@@ -22,7 +22,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
         fontFamily: 'Raleway',
-        unselectedWidgetColor: Colors.white54,
+        primaryColor: const Color(0xff171941),
+        secondaryHeaderColor: const Color(0xffe14eca),
       ),
 
       // Set home untuk constructor MyStatefulWidget()
@@ -65,6 +66,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       'Untuk halaman masuk (not implemented yet here)',
       style: optionStyle,
     ),
+
+    forum.ForumRoot(),
   ];
 
   // Define untuk set state saat navbar diklik
@@ -91,7 +94,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       // Set bg color
       backgroundColor: Colors.purple[300],
 
-      // Set body (sebagian dari kode ini terinspirasi oleh https://youtu.be/4wS5LdXJgEA)
       body: Container(
           padding: const EdgeInsets.all(12),
           child: Stack(fit: StackFit.expand, children: [
@@ -118,8 +120,30 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             ),
           ])),
 
+      // Set body (sebagian dari kode ini terinspirasi oleh https://youtu.be/4wS5LdXJgEA)
+      // body: Container(
+      //     padding: const EdgeInsets.all(12),
+      //     child: Stack(fit: StackFit.expand, children: [
+      //       buildBackground(),
+      //       Center(
+      //         child: buildCenterText(),
+      //       ),
+      //       Align(
+      //         alignment: const Alignment(0.0, 1),
+      //         child: buildLikeFB(),
+      //       ),
+      //       Positioned(
+      //         right: 8,
+      //         top: 4,
+      //         child: buildLogo(),
+      //       ),
+      //     ])),
+
+      // body: _widgetOptions[_selectedIndex],
+
       // Set untuk navbar (sebagian dari kode ini didapat dari Flutter API)
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -132,6 +156,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Masuk',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.forum),
+            label: 'Forum',
           ),
         ],
         currentIndex: _selectedIndex,
