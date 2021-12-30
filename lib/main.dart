@@ -3,6 +3,7 @@
 
 // Import material package (very important!)
 import 'package:flutter/material.dart';
+import 'package:pbpbimbol/regisSiswa/screens/register_siswa.dart';
 
 // Run MyApp as main function
 void main() => runApp(const MyApp());
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
         fontFamily: 'Raleway',
+        unselectedWidgetColor: Colors.white54,
       ),
 
       // Set home untuk constructor MyStatefulWidget()
@@ -105,6 +107,14 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               right: 8,
               top: 4,
               child: buildLogo(),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return registrasiSiswa();
+                }));
+              },
+              child: Text('Get Started'),
             ),
           ])),
 
