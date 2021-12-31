@@ -423,10 +423,6 @@ class _registrasiSiswaState extends State<registrasiSiswa> {
                                 } else {
                                   subjects.remove("Matematika");
                                 }
-
-                                if (subjects != null) {
-                                  print(subjects);
-                                }
                               }),
                           CheckboxListTile(
                               controlAffinity: ListTileControlAffinity.leading,
@@ -442,10 +438,6 @@ class _registrasiSiswaState extends State<registrasiSiswa> {
                                   subjects.add("Fisika");
                                 } else {
                                   subjects.remove("Fisika");
-                                }
-
-                                if (subjects != null) {
-                                  print(subjects);
                                 }
                               }),
                           CheckboxListTile(
@@ -463,10 +455,6 @@ class _registrasiSiswaState extends State<registrasiSiswa> {
                                 } else {
                                   subjects.remove("Biologi");
                                 }
-
-                                if (subjects != null) {
-                                  print(subjects);
-                                }
                               }),
                           CheckboxListTile(
                               controlAffinity: ListTileControlAffinity.leading,
@@ -482,10 +470,6 @@ class _registrasiSiswaState extends State<registrasiSiswa> {
                                   subjects.add("Kimia");
                                 } else {
                                   subjects.remove("Kimia");
-                                }
-
-                                if (subjects != null) {
-                                  print(subjects);
                                 }
                               }),
                           CheckboxListTile(
@@ -503,10 +487,6 @@ class _registrasiSiswaState extends State<registrasiSiswa> {
                                 } else {
                                   subjects.remove("B.Indonesia");
                                 }
-
-                                if (subjects != null) {
-                                  print(subjects);
-                                }
                               }),
                           CheckboxListTile(
                               controlAffinity: ListTileControlAffinity.leading,
@@ -522,10 +502,6 @@ class _registrasiSiswaState extends State<registrasiSiswa> {
                                   subjects.add("B.Inggris");
                                 } else {
                                   subjects.remove("B.Inggris");
-                                }
-
-                                if (subjects != null) {
-                                  print(subjects);
                                 }
                               }),
                           CheckboxListTile(
@@ -543,10 +519,6 @@ class _registrasiSiswaState extends State<registrasiSiswa> {
                                 } else {
                                   subjects.remove("Ekonomi");
                                 }
-
-                                if (subjects != null) {
-                                  print(subjects);
-                                }
                               }),
                           CheckboxListTile(
                               controlAffinity: ListTileControlAffinity.leading,
@@ -562,10 +534,6 @@ class _registrasiSiswaState extends State<registrasiSiswa> {
                                   subjects.add("Geografi");
                                 } else {
                                   subjects.remove("Geografi");
-                                }
-
-                                if (subjects != null) {
-                                  print(subjects);
                                 }
                               }),
                           CheckboxListTile(
@@ -583,10 +551,6 @@ class _registrasiSiswaState extends State<registrasiSiswa> {
                                 } else {
                                   subjects.remove("Sosiologi");
                                 }
-
-                                if (subjects != null) {
-                                  print(subjects);
-                                }
                               }),
                           CheckboxListTile(
                               controlAffinity: ListTileControlAffinity.leading,
@@ -602,10 +566,6 @@ class _registrasiSiswaState extends State<registrasiSiswa> {
                                   subjects.add("Sejarah");
                                 } else {
                                   subjects.remove("Sejarah");
-                                }
-
-                                if (subjects != null) {
-                                  print(subjects);
                                 }
                               }),
                           SizedBox(height: 30),
