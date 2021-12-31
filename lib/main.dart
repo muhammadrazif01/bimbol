@@ -1,24 +1,25 @@
-// some part of this code is adapted and modified from flutter api
-// (https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html)
-
-// Import material package (very important!)
+// import material package needed for this file
 import 'package:flutter/material.dart';
 import 'forum/screens/root.dart' as forum;
+import 'screens/homepage.dart' as homepage;
+import 'screens/screen_for_login.dart' as loginpage;
 
-// Run MyApp as main function
+// run MyApp as main function
 void main() => runApp(const MyApp());
 
 // MyApp as main widget container
 class MyApp extends StatelessWidget {
+
   const MyApp({Key? key}) : super(key: key);
 
+  // Override build method for this class
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      // title : set menjadi bimbol
-      title: 'BIMBOL',
 
-      // theme : atur tema menjadi warna ungu dan font menjadi Raleway
+    // Using material app, set the title, theme, font and what goes inside it
+    return MaterialApp(
+
+      title: 'BIMBOL',
       theme: ThemeData(
         primarySwatch: Colors.purple,
         fontFamily: 'Raleway',
@@ -26,62 +27,83 @@ class MyApp extends StatelessWidget {
         secondaryHeaderColor: const Color(0xffe14eca),
       ),
 
-      // Set home untuk constructor MyStatefulWidget()
+
       home: const MyStatefulWidget(),
     );
   }
 }
 
-// StatefulWidget yang akan diinitiate
+// initiate stateful widget
 class MyStatefulWidget extends StatefulWidget {
+
   const MyStatefulWidget({Key? key}) : super(key: key);
 
-  // Set status untuk StatefulWidget
   @override
   State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
 }
 
-// Buat kelas private untuk state dari StatefulWidget
+// create the actual state
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  // Atur setting untuk state dari Stateful Widget
+
+  // initiatializing for bottom navbar
   int _selectedIndex = 0;
-  static const TextStyle optionStyle = TextStyle(
-      fontFamily: 'Raleway', fontSize: 30, fontWeight: FontWeight.w900);
+
   // ignore: unused_field
   static const List<Widget> _widgetOptions = <Widget>[
-    // Text untuk bagian mainpage
+
+    // mainpage
+    homepage.HomePage(),
+
+    // daftar guru
     Text(
-      'This contains button for information',
-      style: optionStyle,
+      'Untuk halaman daftar guru (not implemented yet here)',
+      style: TextStyle(color: Colors.white),
     ),
 
-    // Text untuk bagian daftar
+    // daftar siswa
     Text(
-      'Untuk halaman daftar (not implemented yet here)',
-      style: optionStyle,
+      'Untuk halaman daftar siswa (not implemented yet here)',
+      style: TextStyle(color: Colors.white),
     ),
 
-    // Text untuk bagian masuk
+    // masuk
+    loginpage.LoginScreen(),
+
+    // jadwal
     Text(
-      'Untuk halaman masuk (not implemented yet here)',
-      style: optionStyle,
+      'Untuk halaman jadwal (not implemented yet here)',
+      style: TextStyle(color: Colors.white),
+    ),
+
+    // booking
+    Text(
+      'Untuk halaman booking (not implemented yet here)',
+      style: TextStyle(color: Colors.white),
     ),
 
     forum.ForumRoot(),
+
+    // testimoni
+    Text(
+      'Untuk halaman testimoni (not implemented yet here)',
+      style: TextStyle(color: Colors.white),
+    ),
   ];
 
-  // Define untuk set state saat navbar diklik
+  // define state-setting when a navbar is clicked
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
 
-  // Build
+  // override the build method for this class
   @override
   Widget build(BuildContext context) {
+
+    // using scaffold, set everything such as app bar, bg color, body, and etc
     return Scaffold(
-      // Appbar
+
       appBar: AppBar(
         title: const Text(
           'BIMBOL\nBimbel di Masa Pandemi',
@@ -91,127 +113,53 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         centerTitle: true,
       ),
 
-      // Set bg color
-      backgroundColor: Colors.purple[300],
-
-      // Set body (sebagian dari kode ini terinspirasi oleh https://youtu.be/4wS5LdXJgEA)
-      // body: Container(
-      //     padding: const EdgeInsets.all(12),
-      //     child: Stack(fit: StackFit.expand, children: [
-      //       buildBackground(),
-      //       Center(
-      //         child: buildCenterText(),
-      //       ),
-      //       Align(
-      //         alignment: const Alignment(0.0, 1),
-      //         child: buildLikeFB(),
-      //       ),
-      //       Positioned(
-      //         right: 8,
-      //         top: 4,
-      //         child: buildLogo(),
-      //       ),
-      //     ])),
+      backgroundColor: const Color(0xff171941),
 
       body: _widgetOptions[_selectedIndex],
 
-      // Set untuk navbar (sebagian dari kode ini didapat dari Flutter API)
+      // set the navbar
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Mainpage',
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_balance_outlined),
+            label: 'Pendaftaran Guru',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.school),
-            label: 'Daftar',
+            label: 'Pendaftaran Siswa',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Masuk',
           ),
           BottomNavigationBarItem(
+            icon: Icon(Icons.calendar_today_outlined),
+            label: 'Jadwal',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.paste),
+            label: 'Booking',
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.forum),
             label: 'Forum',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.summarize_outlined),
+            label: 'Testimoni',
           ),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.purple,
         onTap: _onItemTapped,
       ),
+
     );
+
   }
-
-  // Widget-widget dibawah diadaptasi, dimodifikasi, dan terinspirasi dari https://youtu.be/4wS5LdXJgEA
-
-  // Buat background
-  Widget buildBackground() => ClipRRect(
-        borderRadius: BorderRadius.circular(24),
-        child: Opacity(
-          opacity: 0.8,
-          child: Image.asset(
-            'assets/image/adobeproject1.png',
-            fit: BoxFit.fitHeight,
-          ),
-        ),
-      );
-
-  // Buat tulisan center
-  Widget buildCenterText() => Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Text(
-            'BIMBOL',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 32,
-              color: Colors.white,
-            ),
-          ),
-          const SizedBox(height: 16),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 42),
-            child: const Text(
-              'Sebuah Solusi Mudah dan Aman di Masa Pandemi',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-                color: Colors.white,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ],
-      );
-
-  // Build like us on FB
-  Widget buildLikeFB() => Container(
-        color: Colors.white,
-        padding: const EdgeInsets.symmetric(vertical: 12),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Icon(Icons.favorite, color: Colors.red),
-            SizedBox(width: 8),
-            Text(
-              'Likes Us on Facebook!',
-              style: TextStyle(
-                color: Colors.red,
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
-        ),
-      );
-
-  // Build logo UI
-  Widget buildLogo() => IconButton(
-        icon: const ImageIcon(
-          AssetImage('assets/image/logoui.png'),
-          color: Colors.yellow,
-        ),
-        onPressed: () {},
-      );
 }
