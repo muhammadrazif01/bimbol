@@ -9,26 +9,20 @@ void main() => runApp(const MyApp());
 
 // MyApp as main widget container
 class MyApp extends StatelessWidget {
-
   const MyApp({Key? key}) : super(key: key);
 
   // Override build method for this class
   @override
   Widget build(BuildContext context) {
-
     // Using material app, set the title, theme, font and what goes inside it
     return MaterialApp(
-
       title: 'BIMBOL',
       theme: ThemeData(
         primarySwatch: Colors.purple,
         fontFamily: 'Raleway',
         primaryColor: const Color(0xff171941),
         secondaryHeaderColor: const Color(0xffe14eca),
-        unselectedWidgetColor: Colors.white54,
       ),
-
-
       home: const MyStatefulWidget(),
     );
   }
@@ -36,7 +30,6 @@ class MyApp extends StatelessWidget {
 
 // initiate stateful widget
 class MyStatefulWidget extends StatefulWidget {
-
   const MyStatefulWidget({Key? key}) : super(key: key);
 
   @override
@@ -45,13 +38,11 @@ class MyStatefulWidget extends StatefulWidget {
 
 // create the actual state
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-
   // initiatializing for bottom navbar
   int _selectedIndex = 0;
 
   // ignore: unused_field
   static const List<Widget> _widgetOptions = <Widget>[
-
     // mainpage
     homepage.HomePage(),
 
@@ -101,10 +92,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   // override the build method for this class
   @override
   Widget build(BuildContext context) {
-
     // using scaffold, set everything such as app bar, bg color, body, and etc
     return Scaffold(
-
       appBar: AppBar(
         title: const Text(
           'BIMBOL\nBimbel di Masa Pandemi',
@@ -159,8 +148,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         selectedItemColor: Colors.purple,
         onTap: _onItemTapped,
       ),
-
     );
-
   }
 }

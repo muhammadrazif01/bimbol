@@ -6,7 +6,7 @@ import 'package:pbpbimbol/main.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:http/http.dart' as http;
 
-Future<http.Response> registFlutter(
+Future<http.Response> RegistFlutter(
     String email,
     String username,
     String pass1,
@@ -44,14 +44,14 @@ Future<http.Response> registFlutter(
   return response;
 }
 
-class registrasiSiswa extends StatefulWidget {
-  const registrasiSiswa({Key? key}) : super(key: key);
+class RegistrasiSiswa extends StatefulWidget {
+  const RegistrasiSiswa({Key? key}) : super(key: key);
 
   @override
-  _registrasiSiswaState createState() => _registrasiSiswaState();
+  _RegistrasiSiswaState createState() => _RegistrasiSiswaState();
 }
 
-class _registrasiSiswaState extends State<registrasiSiswa> {
+class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
   final _formKey = GlobalKey<FormState>();
 
   String username = "";
@@ -94,10 +94,10 @@ class _registrasiSiswaState extends State<registrasiSiswa> {
           centerTitle: true,
         ),
         body: Container(
-          color: Color.fromARGB(255, 23, 25, 65),
+          color: const Color.fromARGB(255, 23, 25, 65),
           child: SingleChildScrollView(
               reverse: true,
-              padding: EdgeInsets.all(25),
+              padding: const EdgeInsets.all(25),
               child: Form(
                 key: _formKey,
                 child: Column(
@@ -710,7 +710,7 @@ class _registrasiSiswaState extends State<registrasiSiswa> {
 
                                       form.save();
 
-                                      registFlutter(
+                                      RegistFlutter(
                                               email,
                                               username,
                                               password1,
