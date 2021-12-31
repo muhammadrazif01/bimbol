@@ -42,4 +42,3 @@ List<Testimoni> testimoniFromJson(String jsonData) {
   return List<Testimoni>.from(data.map((item) => Testimoni.fromJson(item)));
   
 }
-
