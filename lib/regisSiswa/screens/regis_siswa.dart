@@ -80,20 +80,24 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
   bool agree = false;
 
   bool _isNumeric(String result) {
-    // if (result == null) {
-    //   return false;
-    // }
     return double.tryParse(result) != null;
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text("BIMBOL"),
-          centerTitle: true,
-        ),
-        body: Container(
+    return MaterialApp(
+        theme: ThemeData(
+            primarySwatch: Colors.purple,
+            fontFamily: 'Raleway',
+            primaryColor: const Color(0xff171941),
+            secondaryHeaderColor: const Color(0xffe14eca),
+            unselectedWidgetColor: Colors.white54),
+        home: Scaffold(
+            // appBar: AppBar(
+            //   title: const Text("BIMBOL"),
+            //   centerTitle: true,
+            // ),
+            body: Container(
           color: const Color.fromARGB(255, 23, 25, 65),
           child: SingleChildScrollView(
               reverse: true,
@@ -128,8 +132,8 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                             },
                             decoration: InputDecoration(
                               focusedBorder: const UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Colors.purple, width: 2),
+                                borderSide:
+                                    BorderSide(color: Colors.purple, width: 2),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15.0),
@@ -165,8 +169,8 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                             },
                             decoration: InputDecoration(
                               focusedBorder: const UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Colors.purple, width: 2),
+                                borderSide:
+                                    BorderSide(color: Colors.purple, width: 2),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15.0),
@@ -202,8 +206,8 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                             },
                             decoration: InputDecoration(
                               focusedBorder: const UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Colors.purple, width: 2),
+                                borderSide:
+                                    BorderSide(color: Colors.purple, width: 2),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15.0),
@@ -242,8 +246,8 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                             },
                             decoration: InputDecoration(
                               focusedBorder: const UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Colors.purple, width: 2),
+                                borderSide:
+                                    BorderSide(color: Colors.purple, width: 2),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15.0),
@@ -280,8 +284,8 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                             },
                             decoration: InputDecoration(
                               focusedBorder: const UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Colors.purple, width: 2),
+                                borderSide:
+                                    BorderSide(color: Colors.purple, width: 2),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15.0),
@@ -745,6 +749,6 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                       ),
                     ]),
               )),
-        ));
+        )));
   }
 }
