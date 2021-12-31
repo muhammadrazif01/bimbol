@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'forum/screens/root.dart' as forum;
 import 'screens/homepage.dart' as homepage;
 import 'screens/screen_for_login.dart' as loginpage;
+import 'regisSiswa/screens/regis_siswa.dart' as regissiswa;
 
 // run MyApp as main function
 void main() => runApp(const MyApp());
@@ -53,10 +54,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     ),
 
     // daftar siswa
-    Text(
-      'Untuk halaman daftar siswa (not implemented yet here)',
-      style: TextStyle(color: Colors.white),
-    ),
+    regissiswa.RegistrasiSiswa(),
 
     // masuk
     loginpage.LoginScreen(),

@@ -107,7 +107,7 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                       const Text(
                         "Registration\nStudent",
                         textAlign: TextAlign.center,
-                        style: const TextStyle(
+                        style: TextStyle(
                           color: Colors.white,
                           fontSize: 40,
                         ),
@@ -119,7 +119,7 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                           const SizedBox(height: 40),
                           const Text("Username*",
                               textAlign: TextAlign.left,
-                              style: const TextStyle(color: Colors.white54)),
+                              style: TextStyle(color: Colors.white54)),
                           const SizedBox(height: 10),
                           TextFormField(
                             style: const TextStyle(color: Colors.white),
@@ -128,7 +128,7 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                             },
                             decoration: InputDecoration(
                               focusedBorder: const UnderlineInputBorder(
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                     color: Colors.purple, width: 2),
                               ),
                               enabledBorder: OutlineInputBorder(
@@ -156,7 +156,7 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                           const SizedBox(height: 30),
                           const Text("Fullname*",
                               textAlign: TextAlign.left,
-                              style: const TextStyle(color: Colors.white54)),
+                              style: TextStyle(color: Colors.white54)),
                           const SizedBox(height: 10),
                           TextFormField(
                             style: const TextStyle(color: Colors.white),
@@ -165,7 +165,7 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                             },
                             decoration: InputDecoration(
                               focusedBorder: const UnderlineInputBorder(
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                     color: Colors.purple, width: 2),
                               ),
                               enabledBorder: OutlineInputBorder(
@@ -193,7 +193,7 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                           const SizedBox(height: 30),
                           const Text("Email*",
                               textAlign: TextAlign.left,
-                              style: const TextStyle(color: Colors.white54)),
+                              style: TextStyle(color: Colors.white54)),
                           const SizedBox(height: 10),
                           TextFormField(
                             style: const TextStyle(color: Colors.white),
@@ -202,7 +202,7 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                             },
                             decoration: InputDecoration(
                               focusedBorder: const UnderlineInputBorder(
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                     color: Colors.purple, width: 2),
                               ),
                               enabledBorder: OutlineInputBorder(
@@ -232,7 +232,7 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                           const SizedBox(height: 30),
                           const Text("Password*",
                               textAlign: TextAlign.left,
-                              style: const TextStyle(color: Colors.white54)),
+                              style: TextStyle(color: Colors.white54)),
                           const SizedBox(height: 10),
                           TextFormField(
                             style: const TextStyle(color: Colors.white),
@@ -242,7 +242,7 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                             },
                             decoration: InputDecoration(
                               focusedBorder: const UnderlineInputBorder(
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                     color: Colors.purple, width: 2),
                               ),
                               enabledBorder: OutlineInputBorder(
@@ -270,7 +270,7 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                           const SizedBox(height: 30),
                           const Text("Password Confirmation*",
                               textAlign: TextAlign.left,
-                              style: const TextStyle(color: Colors.white54)),
+                              style: TextStyle(color: Colors.white54)),
                           const SizedBox(height: 10),
                           TextFormField(
                             style: const TextStyle(color: Colors.white),
@@ -280,7 +280,7 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                             },
                             decoration: InputDecoration(
                               focusedBorder: const UnderlineInputBorder(
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                     color: Colors.purple, width: 2),
                               ),
                               enabledBorder: OutlineInputBorder(
@@ -310,7 +310,7 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                           const SizedBox(height: 30),
                           const Text("Telephone Number*",
                               textAlign: TextAlign.left,
-                              style: const TextStyle(color: Colors.white54)),
+                              style: TextStyle(color: Colors.white54)),
                           const SizedBox(height: 10),
                           TextFormField(
                             style: const TextStyle(color: Colors.white),
@@ -324,15 +324,15 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15.0),
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Colors.white54,
                                 ),
                               ),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
                                   borderSide:
-                                      BorderSide(color: Colors.white54)),
-                              prefixIcon: Icon(
+                                      const BorderSide(color: Colors.white54)),
+                              prefixIcon: const Icon(
                                 Icons.phone,
                                 color: Colors.white54,
                               ),
@@ -346,11 +346,11 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                               return null;
                             },
                           ),
-                          SizedBox(height: 30),
-                          Text("Birthdate*",
+                          const SizedBox(height: 30),
+                          const Text("Birthdate*",
                               textAlign: TextAlign.left,
                               style: TextStyle(color: Colors.white54)),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           ElevatedButton(
                               onPressed: () {
                                 showDatePicker(
@@ -366,14 +366,14 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                                   },
                                 );
                               },
-                              child: Text("Pick Birthdate")),
-                          SizedBox(height: 30),
-                          Text("Grade*",
+                              child: const Text("Pick Birthdate")),
+                          const SizedBox(height: 30),
+                          const Text("Grade*",
                               textAlign: TextAlign.left,
                               style: TextStyle(color: Colors.white54)),
                           RadioListTile(
                               value: "10",
-                              title: Text("10",
+                              title: const Text("10",
                                   style: TextStyle(
                                       color: Colors.white54, fontSize: 14)),
                               groupValue: grade,
@@ -384,7 +384,7 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                               }),
                           RadioListTile(
                               value: "11",
-                              title: Text("11",
+                              title: const Text("11",
                                   style: TextStyle(
                                       color: Colors.white54, fontSize: 14)),
                               groupValue: grade,
@@ -395,7 +395,7 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                               }),
                           RadioListTile(
                               value: "12",
-                              title: Text("12",
+                              title: const Text("12",
                                   style: TextStyle(
                                       color: Colors.white54, fontSize: 14)),
                               groupValue: grade,
@@ -404,14 +404,14 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                                   grade = value!;
                                 });
                               }),
-                          SizedBox(height: 30),
-                          Text("Subjects*",
+                          const SizedBox(height: 30),
+                          const Text("Subjects*",
                               textAlign: TextAlign.left,
                               style: TextStyle(color: Colors.white54)),
                           CheckboxListTile(
                               controlAffinity: ListTileControlAffinity.leading,
                               value: mate,
-                              title: Text("Matematika",
+                              title: const Text("Matematika",
                                   style: TextStyle(color: Colors.white54)),
                               onChanged: (value) {
                                 setState(() {
@@ -427,7 +427,7 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                           CheckboxListTile(
                               controlAffinity: ListTileControlAffinity.leading,
                               value: fis,
-                              title: Text("Fisika",
+                              title: const Text("Fisika",
                                   style: TextStyle(color: Colors.white54)),
                               onChanged: (value) {
                                 setState(() {
@@ -443,7 +443,7 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                           CheckboxListTile(
                               controlAffinity: ListTileControlAffinity.leading,
                               value: bio,
-                              title: Text("Biologi",
+                              title: const Text("Biologi",
                                   style: TextStyle(color: Colors.white54)),
                               onChanged: (value) {
                                 setState(() {
@@ -459,7 +459,7 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                           CheckboxListTile(
                               controlAffinity: ListTileControlAffinity.leading,
                               value: kim,
-                              title: Text("Kimia",
+                              title: const Text("Kimia",
                                   style: TextStyle(color: Colors.white54)),
                               onChanged: (value) {
                                 setState(() {
@@ -475,7 +475,7 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                           CheckboxListTile(
                               controlAffinity: ListTileControlAffinity.leading,
                               value: indo,
-                              title: Text("B.Indonesia",
+                              title: const Text("B.Indonesia",
                                   style: TextStyle(color: Colors.white54)),
                               onChanged: (value) {
                                 setState(() {
@@ -491,7 +491,7 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                           CheckboxListTile(
                               controlAffinity: ListTileControlAffinity.leading,
                               value: ing,
-                              title: Text("B.Inggris",
+                              title: const Text("B.Inggris",
                                   style: TextStyle(color: Colors.white54)),
                               onChanged: (value) {
                                 setState(() {
@@ -507,7 +507,7 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                           CheckboxListTile(
                               controlAffinity: ListTileControlAffinity.leading,
                               value: eko,
-                              title: Text("Ekonomi",
+                              title: const Text("Ekonomi",
                                   style: TextStyle(color: Colors.white54)),
                               onChanged: (value) {
                                 setState(() {
@@ -523,7 +523,7 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                           CheckboxListTile(
                               controlAffinity: ListTileControlAffinity.leading,
                               value: geo,
-                              title: Text("Geografi",
+                              title: const Text("Geografi",
                                   style: TextStyle(color: Colors.white54)),
                               onChanged: (value) {
                                 setState(() {
@@ -539,7 +539,7 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                           CheckboxListTile(
                               controlAffinity: ListTileControlAffinity.leading,
                               value: sos,
-                              title: Text("Sosiologi",
+                              title: const Text("Sosiologi",
                                   style: TextStyle(color: Colors.white54)),
                               onChanged: (value) {
                                 setState(() {
@@ -555,7 +555,7 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                           CheckboxListTile(
                               controlAffinity: ListTileControlAffinity.leading,
                               value: sej,
-                              title: Text("Sejarah",
+                              title: const Text("Sejarah",
                                   style: TextStyle(color: Colors.white54)),
                               onChanged: (value) {
                                 setState(() {
@@ -568,33 +568,33 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                                   subjects.remove("Sejarah");
                                 }
                               }),
-                          SizedBox(height: 30),
-                          Text("Address*",
+                          const SizedBox(height: 30),
+                          const Text("Address*",
                               textAlign: TextAlign.left,
                               style: TextStyle(color: Colors.white54)),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           TextFormField(
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                             maxLines: 4,
                             onChanged: (String value) {
                               address = value;
                             },
                             decoration: InputDecoration(
-                              focusedBorder: UnderlineInputBorder(
+                              focusedBorder: const UnderlineInputBorder(
                                 borderSide:
                                     BorderSide(color: Colors.purple, width: 2),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15.0),
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Colors.white54,
                                 ),
                               ),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
                                   borderSide:
-                                      BorderSide(color: Colors.white54)),
-                              prefixIcon: Icon(
+                                      const BorderSide(color: Colors.white54)),
+                              prefixIcon: const Icon(
                                 Icons.home,
                                 color: Colors.white54,
                               ),
@@ -606,13 +606,13 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                               return null;
                             },
                           ),
-                          SizedBox(height: 30),
-                          Text("Gender*",
+                          const SizedBox(height: 30),
+                          const Text("Gender*",
                               textAlign: TextAlign.left,
                               style: TextStyle(color: Colors.white54)),
                           RadioListTile(
                               value: "p",
-                              title: Text("Pria",
+                              title: const Text("Pria",
                                   style: TextStyle(
                                       color: Colors.white54, fontSize: 14)),
                               groupValue: gender,
@@ -623,7 +623,7 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                               }),
                           RadioListTile(
                               value: "w",
-                              title: Text("Wanita",
+                              title: const Text("Wanita",
                                   style: TextStyle(
                                       color: Colors.white54, fontSize: 14)),
                               groupValue: gender,
@@ -632,13 +632,13 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                                   gender = value!;
                                 });
                               }),
-                          SizedBox(height: 30),
-                          Text("Payment Details*",
+                          const SizedBox(height: 30),
+                          const Text("Payment Details*",
                               textAlign: TextAlign.left,
                               style: TextStyle(color: Colors.white54)),
                           RadioListTile(
                               value: "CASH",
-                              title: Text("Cash",
+                              title: const Text("Cash",
                                   style: TextStyle(
                                       color: Colors.white54, fontSize: 14)),
                               groupValue: payment,
@@ -649,7 +649,7 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                               }),
                           RadioListTile(
                               value: "CHECK",
-                              title: Text("Check",
+                              title: const Text("Check",
                                   style: TextStyle(
                                       color: Colors.white54, fontSize: 14)),
                               groupValue: payment,
@@ -660,7 +660,7 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                               }),
                           RadioListTile(
                               value: "CARD",
-                              title: Text("Card",
+                              title: const Text("Card",
                                   style: TextStyle(
                                       color: Colors.white54, fontSize: 14)),
                               groupValue: payment,
@@ -669,10 +669,10 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                                   payment = value!;
                                 });
                               }),
-                          SizedBox(height: 30),
+                          const SizedBox(height: 30),
                           Row(
                             children: [
-                              Text("I agree to the terms and condition",
+                              const Text("I agree to the terms and condition",
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                       color:
@@ -687,7 +687,7 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                               )
                             ],
                           ),
-                          SizedBox(height: 70),
+                          const SizedBox(height: 70),
                         ],
                       ),
                       Center(
@@ -728,18 +728,18 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                                         Navigator.push(context,
                                             MaterialPageRoute(
                                                 builder: (context) {
-                                          return MyStatefulWidget();
+                                          return const MyStatefulWidget();
                                         }));
                                       });
                                     }
                                   },
-                                  child: Text('Get Started',
+                                  child: const Text('Get Started',
                                       style: TextStyle(fontSize: 15)),
                                   style: ElevatedButton.styleFrom(
                                     shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(25)),
-                                    minimumSize: Size(250, 50),
+                                    minimumSize: const Size(250, 50),
                                   )),
                             ]),
                       ),
