@@ -93,10 +93,6 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
             secondaryHeaderColor: const Color(0xffe14eca),
             unselectedWidgetColor: Colors.white54),
         home: Scaffold(
-            // appBar: AppBar(
-            //   title: const Text("BIMBOL"),
-            //   centerTitle: true,
-            // ),
             body: Container(
           color: const Color.fromARGB(255, 23, 25, 65),
           child: SingleChildScrollView(
