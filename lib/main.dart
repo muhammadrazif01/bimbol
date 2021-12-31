@@ -6,6 +6,7 @@ import 'screens/screen_for_login.dart' as loginpage;
 import 'regisSiswa/screens/regis_siswa.dart' as regissiswa;
 import 'jadwal/screens/jadwal.dart' as jadwal;
 import 'booking/daftar_guru.dart' as booking;
+import 'testimoni/screens/testimoni_display.dart' as testimoni;
 
 // run MyApp as main function
 void main() => runApp(const MyApp());
@@ -70,10 +71,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     forum.ForumRoot(),
 
     // testimoni
-    Text(
-      'Untuk halaman testimoni (not implemented yet here)',
-      style: TextStyle(color: Colors.white),
-    ),
+    testimoni.TestimoniScreen(),
   ];
 
   // define state-setting when a navbar is clicked
