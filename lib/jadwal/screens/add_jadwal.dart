@@ -17,7 +17,6 @@ class AddJadwal extends StatelessWidget {
   }
 }
 
-// Create a Form widget.
 class AddJadwalForm extends StatefulWidget {
   const AddJadwalForm({Key? key}) : super(key: key);
 
@@ -27,17 +26,9 @@ class AddJadwalForm extends StatefulWidget {
   }
 }
 
-// Create a corresponding State class.
-// This class holds data related to the form.
 class AddJadwalFormState extends State<AddJadwalForm> {
-  // Create a global key that uniquely identifies the Form widget
-  // and allows validation of the form.
-  //
-  // Note: This is a GlobalKey<FormState>,
-  // not a GlobalKey<AddJadwalFormState>.
   final _formKey = GlobalKey<FormState>();
   final TextEditingController nama = TextEditingController();
-  // final TextEditingController kelas = TextEditingController();
   late String kelas;
   late String hari;
   final TextEditingController link = TextEditingController();
@@ -56,8 +47,6 @@ class AddJadwalFormState extends State<AddJadwalForm> {
               desc.text)
           .then((res) {
         if (res) {
-          // Navigator.of(context).pushAndRemoveUntil(
-          //     MaterialPageRoute(builder: (context) => Employee()), (route) => false);
           Navigator.pop(context, true);
         } else {
           setState(() {
@@ -86,7 +75,6 @@ class AddJadwalFormState extends State<AddJadwalForm> {
 
   @override
   Widget build(BuildContext context) {
-    // Build a Form widget using the _formKey created above.
     return Form(
         key: _formKey,
         child: ListView(
@@ -94,11 +82,6 @@ class AddJadwalFormState extends State<AddJadwalForm> {
             TextFormField(
               controller: nama,
               decoration: const InputDecoration(
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.pinkAccent,
-                  ),
-                ),
                 labelText: 'Nama Jadwal',
                 labelStyle: TextStyle(color: Colors.white70),
               ),
@@ -156,10 +139,12 @@ class AddJadwalFormState extends State<AddJadwalForm> {
             ),
             TextFormField(
               controller: start,
-              decoration: const InputDecoration(labelText: "Jam Mulai", labelStyle: TextStyle(color: Colors.white70),),
+              decoration: const InputDecoration(
+                labelText: "Jam Mulai",
+                labelStyle: TextStyle(color: Colors.white70),
+              ),
               style: const TextStyle(color: Colors.white70),
-              readOnly:
-                  true, //set it true, so that user will not able to edit text
+              readOnly: true,
               onTap: () async {
                 final TimeOfDay? pickedTime = await showTimePicker(
                     context: context,
@@ -172,17 +157,13 @@ class AddJadwalFormState extends State<AddJadwalForm> {
                     });
 
                 if (pickedTime != null) {
-                  // print(pickedTime.format(context)); //output 10:51 PM
                   DateTime parsedTime = DateFormat.jm()
                       .parse(pickedTime.format(context).toString());
-                  //converting to DateTime so that we can further format on different pattern.
-                  // print(parsedTime); //output 1970-01-01 22:53:00.000
+
                   String formattedTime = DateFormat('HH:mm').format(parsedTime);
-                  // print(formattedTime); //output 14:59:00
-                  //DateFormat() is from intl package, you can format the time on any pattern you need.
 
                   setState(() {
-                    start.text = formattedTime; //set the value of text field.
+                    start.text = formattedTime;
                   });
                 }
               },
@@ -195,10 +176,12 @@ class AddJadwalFormState extends State<AddJadwalForm> {
             ),
             TextFormField(
               controller: end,
-              decoration: const InputDecoration(labelText: "Jam Selesai", labelStyle: TextStyle(color: Colors.white70),),
+              decoration: const InputDecoration(
+                labelText: "Jam Selesai",
+                labelStyle: TextStyle(color: Colors.white70),
+              ),
               style: const TextStyle(color: Colors.white70),
-              readOnly:
-                  true, //set it true, so that user will not able to edit text
+              readOnly: true,
               onTap: () async {
                 final TimeOfDay? pickedTime = await showTimePicker(
                     context: context,
@@ -211,17 +194,13 @@ class AddJadwalFormState extends State<AddJadwalForm> {
                     });
 
                 if (pickedTime != null) {
-                  // print(pickedTime.format(context)); //output 10:51 PM
                   DateTime parsedTime = DateFormat.jm()
                       .parse(pickedTime.format(context).toString());
-                  //converting to DateTime so that we can further format on different pattern.
-                  // print(parsedTime); //output 1970-01-01 22:53:00.000
+
                   String formattedTime = DateFormat('HH:mm').format(parsedTime);
-                  // print(formattedTime); //output 14:59:00
-                  //DateFormat() is from intl package, you can format the time on any pattern you need.
 
                   setState(() {
-                    end.text = formattedTime; //set the value of text field.
+                    end.text = formattedTime;
                   });
                 }
               },
@@ -235,11 +214,7 @@ class AddJadwalFormState extends State<AddJadwalForm> {
             TextFormField(
                 controller: link,
                 decoration: const InputDecoration(
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.pinkAccent,
-                    ),
-                  ),
+                
                   labelText: 'Link',
                   labelStyle: TextStyle(color: Colors.white70),
                 ),
@@ -259,11 +234,7 @@ class AddJadwalFormState extends State<AddJadwalForm> {
             TextFormField(
               controller: desc,
               decoration: const InputDecoration(
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.pinkAccent,
-                  ),
-                ),
+              
                 labelText: 'Deskripsi',
                 labelStyle: TextStyle(color: Colors.white70),
               ),
@@ -271,10 +242,7 @@ class AddJadwalFormState extends State<AddJadwalForm> {
             ),
             ElevatedButton(
               onPressed: () {
-                // Validate returns true if the form is valid, or false otherwise.
                 if (_formKey.currentState!.validate()) {
-                  // If the form is valid, display a snackbar. In the real world,
-                  // you'd often call a server or save the information in a database.
                   submit(context);
                 }
               },
