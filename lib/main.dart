@@ -7,6 +7,7 @@ import 'regisSiswa/screens/regis_siswa.dart' as regissiswa;
 import 'jadwal/screens/jadwal.dart' as jadwal;
 import 'booking/daftar_guru.dart' as booking;
 import 'testimoni/screens/testimoni_display.dart' as testimoni;
+import 'register_guru/register_guru.dart' as register_guru;
 
 // run MyApp as main function
 void main() => runApp(const MyApp());
@@ -51,10 +52,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     homepage.HomePage(),
 
     // daftar guru
-    Text(
-      'Untuk halaman daftar guru (not implemented yet here)',
-      style: TextStyle(color: Colors.white),
-    ),
+    register_guru.myApp(),
 
     // daftar siswa
     regissiswa.RegistrasiSiswa(),
