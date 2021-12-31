@@ -1,9 +1,9 @@
-import 'dart:convert';
+// ignore_for_file: constant_identifier_names, deprecated_member_use
+
 import 'package:flutter/material.dart';
 import '../api.dart';
 import '../models/testimoni.dart';
 import '../screens/testimoni_form.dart';
-import 'package:http/http.dart' as http;
 
 GlobalKey<ScaffoldState> _scaffoldState = GlobalKey<ScaffoldState>();
 
@@ -16,6 +16,7 @@ class TestimoniScreen extends StatefulWidget {
 }
 
 class _TestimoniScreenState extends State<TestimoniScreen> {
+  @override
   late BuildContext context;
   late ApiService apiService;
 
@@ -58,7 +59,7 @@ class _TestimoniScreenState extends State<TestimoniScreen> {
             List<Testimoni> testimonial = snapshot.data!;
             return _buildListView(testimonial);
           } else {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           }
@@ -106,12 +107,12 @@ class _TestimoniScreenState extends State<TestimoniScreen> {
                   children: <Widget>[
                     ListTile(title: Text(
                       testi.testimoni,
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontSize: 23, fontWeight: FontWeight.bold, color: Colors.white70),
                     ),
                     subtitle:
                         Text(testi.nama + ' kelas ' + testi.kelas,
-                        style: TextStyle(color: Colors.white70)),),
+                        style: const TextStyle(color: Colors.white70)),),
                     // Text(
                     //   testi.testimoni,
                     //   style: TextStyle(
@@ -128,27 +129,27 @@ class _TestimoniScreenState extends State<TestimoniScreen> {
                                 context: context,
                                 builder: (context) {
                                   return AlertDialog(
-                                    title: Text("Warning"),
-                                    content: Text("Apa anda yakin ingin menghapus testimoni ini?"),
+                                    title: const Text("Warning"),
+                                    content: const Text("Apa anda yakin ingin menghapus testimoni ini?"),
                                     actions: <Widget>[
                                       FlatButton(
-                                        child: Text("Yes"),
+                                        child: const Text("Yes"),
                                         onPressed: () {
                                           Navigator.pop(context);
                                           apiService.deleteTestimoni(testi.id).then((isSuccess) {
                                             if (isSuccess) {
                                               setState(() {});
                                               Scaffold.of(this.context)
-                                                  .showSnackBar(SnackBar(content: Text("Delete data success")));
+                                                  .showSnackBar(const SnackBar(content: Text("Delete data success")));
                                             } else {
                                               Scaffold.of(this.context)
-                                                  .showSnackBar(SnackBar(content: Text("Delete data failed")));
+                                                  .showSnackBar(const SnackBar(content: Text("Delete data failed")));
                                             }
                                           });
                                         },
                                       ),
                                       FlatButton(
-                                        child: Text("No"),
+                                        child: const Text("No"),
                                         onPressed: () {
                                           Navigator.pop(context);
                                         },
@@ -157,7 +158,7 @@ class _TestimoniScreenState extends State<TestimoniScreen> {
                                   );
                                 });
                           },
-                          child: Text(
+                          child: const Text(
                             "Delete",
                             style: TextStyle(color: Colors.red),
                           ),
@@ -171,7 +172,7 @@ class _TestimoniScreenState extends State<TestimoniScreen> {
                               setState(() {});
                             }
                           },
-                          child: Text(
+                          child: const Text(
                             "Edit",
                             style: TextStyle(color: Colors.blue),
                           ),

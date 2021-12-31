@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable, deprecated_member_use
+
 import 'package:flutter/material.dart';
 import '../api.dart';
 import '../models/testimoni.dart';
@@ -7,7 +9,7 @@ final GlobalKey<ScaffoldState> _scaffoldState = GlobalKey<ScaffoldState>();
 class TestimoniFormScreen extends StatefulWidget {
   Testimoni testi;
 
-  TestimoniFormScreen({required this.testi});
+  TestimoniFormScreen({Key? key, required this.testi}) : super(key: key);
 
   @override
   _TestimoniFormScreenState createState() => _TestimoniFormScreenState();
@@ -15,13 +17,13 @@ class TestimoniFormScreen extends StatefulWidget {
 
 class _TestimoniFormScreenState extends State<TestimoniFormScreen> {
   bool _isLoading = false;
-  ApiService _apiService = ApiService();
+  final ApiService _apiService = ApiService();
   bool _isFieldNamaValid = false;
   bool _isFieldKelasValid = false;
   bool _isFieldTestimoniValid = false;
-  TextEditingController _controllerNama = TextEditingController();
-  TextEditingController _controllerKelas = TextEditingController();
-  TextEditingController _controllerTestimoni = TextEditingController();
+  final TextEditingController _controllerNama = TextEditingController();
+  final TextEditingController _controllerKelas = TextEditingController();
+  final TextEditingController _controllerTestimoni = TextEditingController();
 
   @override
   void initState() {
@@ -42,10 +44,10 @@ class _TestimoniFormScreenState extends State<TestimoniFormScreen> {
       backgroundColor: Theme.of(context).primaryColor,
       key: _scaffoldState,
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         title: Text(
           widget.testi.id == 0 ? "Tambahkan Testimoni" : "Update Testimoni",
-          style: TextStyle(color: Colors.white),
+          style: const TextStyle(color: Colors.white),
         ),
       ),
       body: Stack(
@@ -78,7 +80,7 @@ class _TestimoniFormScreenState extends State<TestimoniFormScreen> {
                      widget.testi.id == 0
                           ? "Tambah".toUpperCase()
                           : "Update".toUpperCase(),
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                       ),
                     ),
@@ -90,7 +92,7 @@ class _TestimoniFormScreenState extends State<TestimoniFormScreen> {
                           !_isFieldKelasValid ||
                           !_isFieldTestimoniValid) {
                         _scaffoldState.currentState!.showSnackBar(
-                          SnackBar(
+                          const SnackBar(
                             content: Text("Please fill all field"),
                           ),
                         );
@@ -108,7 +110,7 @@ class _TestimoniFormScreenState extends State<TestimoniFormScreen> {
                           if (isSuccess) {
                             Navigator.pop(_scaffoldState.currentState!.context, true);
                           } else {
-                            _scaffoldState.currentState!.showSnackBar(SnackBar(
+                            _scaffoldState.currentState!.showSnackBar(const SnackBar(
                               content: Text("Tambah data failed"),
                             ));
                           }
@@ -120,7 +122,7 @@ class _TestimoniFormScreenState extends State<TestimoniFormScreen> {
                           if (isSuccess) {
                             Navigator.pop(_scaffoldState.currentState!.context, true);
                           } else {
-                            _scaffoldState.currentState!.showSnackBar(SnackBar(
+                            _scaffoldState.currentState!.showSnackBar(const SnackBar(
                               content: Text("Update data failed"),
                             ));
                           }
@@ -135,7 +137,7 @@ class _TestimoniFormScreenState extends State<TestimoniFormScreen> {
           ),
           _isLoading
               ? Stack(
-                  children: <Widget>[
+                  children: const <Widget>[
                     Opacity(
                       opacity: 0.3,
                       child: ModalBarrier(
@@ -159,17 +161,17 @@ class _TestimoniFormScreenState extends State<TestimoniFormScreen> {
     return TextField(
       controller: _controllerNama,
       keyboardType: TextInputType.text,
-      style: TextStyle(color: Colors.white70),
+      style: const TextStyle(color: Colors.white70),
       decoration: InputDecoration(
         
         hintText: "Contoh: Edogawa Conan",
         hintStyle: const TextStyle( color: Colors.white70,),
         labelText: "Nama Lengkap",
         labelStyle: const TextStyle( color: Colors.white70,),
-        icon: Icon(Icons.person, color: Colors.white70,),
+        icon: const Icon(Icons.person, color: Colors.white70,),
 
         border: OutlineInputBorder(
-            borderRadius: new BorderRadius.circular(5.0)),
+            borderRadius: BorderRadius.circular(5.0)),
             fillColor: Colors.white70,
         errorText: _isFieldNamaValid == false || _isFieldNamaValid
             ? null
@@ -189,15 +191,15 @@ class _TestimoniFormScreenState extends State<TestimoniFormScreen> {
     return TextField(
       controller: _controllerKelas,
       keyboardType: TextInputType.text,
-      style: TextStyle(color: Colors.white70),
+      style: const TextStyle(color: Colors.white70),
       decoration: InputDecoration(
         hintText: "Contoh: 12 IPA, 11 IPS",
         hintStyle: const TextStyle( color: Colors.white70,),
         labelText: "Kelas",
         labelStyle: const TextStyle( color: Colors.white70,),
-        icon: Icon(Icons.school, color: Colors.white70,),
+        icon: const Icon(Icons.school, color: Colors.white70,),
         border: OutlineInputBorder(
-            borderRadius: new BorderRadius.circular(5.0)),
+            borderRadius: BorderRadius.circular(5.0)),
             fillColor: Colors.white70,
         errorText: _isFieldKelasValid == false || _isFieldKelasValid
             ? null
@@ -217,14 +219,14 @@ class _TestimoniFormScreenState extends State<TestimoniFormScreen> {
       controller: _controllerTestimoni,
       minLines: 6, 
       keyboardType: TextInputType.multiline,
-      style: TextStyle(color: Colors.white70),
+      style: const TextStyle(color: Colors.white70),
       maxLines: null,
       decoration: InputDecoration(
         labelText: "Testimoni",
         labelStyle: const TextStyle( color: Colors.white70,),
-        icon: Icon(Icons.reviews, color: Colors.white70,),
+        icon: const Icon(Icons.reviews, color: Colors.white70,),
         border: OutlineInputBorder(
-            borderRadius: new BorderRadius.circular(5.0)),
+            borderRadius: BorderRadius.circular(5.0)),
             fillColor: Colors.white70,
         errorText: _isFieldTestimoniValid == false || _isFieldTestimoniValid
             ? null

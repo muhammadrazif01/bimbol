@@ -1,12 +1,14 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'dart:convert';
-import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 void main() {
-  runApp(myApp());
+  runApp(const myApp());
 }
 
+// ignore: camel_case_types
 class myApp extends StatelessWidget {
   const myApp({Key? key}) : super(key: key);
 
@@ -14,9 +16,9 @@ class myApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Login UI',
-      theme: new ThemeData(scaffoldBackgroundColor: Colors.grey[900]),
+      theme: ThemeData(scaffoldBackgroundColor: Colors.grey[900]),
       debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
+      home: const MyHomePage(),
     );
   }
 
@@ -24,6 +26,8 @@ class myApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
+
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -43,38 +47,36 @@ class _MyHomePageState extends State<MyHomePage> {
       resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
         child: ConstrainedBox(
-          constraints:BoxConstraints() ,
+          constraints:const BoxConstraints() ,
           child: ListView(
             scrollDirection: Axis.vertical,
             shrinkWrap: true,
             children: <Widget>[
-              Container(
-                child: Stack(
-                  children: <Widget>[
-                    Container(
-                      padding: EdgeInsets.fromLTRB(15.0, 110.0, 0.0, 0.0),
-                      child: Text('Hello',
-                      style: TextStyle(
-                      fontSize: 80.0, fontWeight: FontWeight.bold, color: Colors.white)
-                      ),
+              Stack(
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.fromLTRB(15.0, 110.0, 0.0, 0.0),
+                    child: const Text('Hello',
+                    style: TextStyle(
+                    fontSize: 80.0, fontWeight: FontWeight.bold, color: Colors.white)
                     ),
-                    SizedBox(height:10.0),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(15.0, 175.0, 0.0, 0.0),
-                      child: Text( 'Teacher',
-                      style: TextStyle(
-                      fontSize: 80.0, fontWeight: FontWeight.bold, color: Colors.white)
-                      ),
+                  ),
+                  const SizedBox(height:10.0),
+                  Container(
+                    padding: const EdgeInsets.fromLTRB(15.0, 175.0, 0.0, 0.0),
+                    child: const Text( 'Teacher',
+                    style: TextStyle(
+                    fontSize: 80.0, fontWeight: FontWeight.bold, color: Colors.white)
                     ),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(310.0, 175.0, 0.0, 0.0),
-                      child: Text('.',
-                      style: TextStyle(
-                      fontSize: 80.0, fontWeight: FontWeight.bold,color: Colors.green)
-                      ),
-                    )
-                  ],
-                ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.fromLTRB(310.0, 175.0, 0.0, 0.0),
+                    child: const Text('.',
+                    style: TextStyle(
+                    fontSize: 80.0, fontWeight: FontWeight.bold,color: Colors.green)
+                    ),
+                  )
+                ],
               ),
               Form(
             key: _regFormKey,
@@ -84,11 +86,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   onChanged: (value){
                     username=value;
                   },
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontFamily: 'Montserrat',
                     color: Colors.white,
                   ),
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'USERNAME',
                     labelStyle: TextStyle(
                       fontFamily: 'Montserrat',
@@ -100,18 +102,18 @@ class _MyHomePageState extends State<MyHomePage> {
                     )
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20.0,
                 ),
                 TextFormField(
                   onChanged: (value){
                     password1=value;
                   },
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontFamily: 'Montserrat',
                     color: Colors.white
                   ),
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'PASSWORD',
                     labelStyle: TextStyle(
                       fontFamily: 'Montserrat',
@@ -128,11 +130,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   onChanged: (value){
                     password2=value;
                   },
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontFamily: 'Montserrat',
                     color: Colors.white,
                   ),
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'CONFIRM PASSWORD',
                     labelStyle: TextStyle(
                       fontFamily: 'Montserrat',
@@ -144,18 +146,18 @@ class _MyHomePageState extends State<MyHomePage> {
                     )
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20.0,
                 ),
                 TextFormField(
                   onChanged: (value){
                     email=value;
                   },
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontFamily: 'Montserrat',
                     color: Colors.white,
                   ),
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'EMAIL',
                     labelStyle: TextStyle(
                       fontFamily: 'Montserrat',
@@ -167,18 +169,18 @@ class _MyHomePageState extends State<MyHomePage> {
                     )
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20.0,
                 ),
                 TextFormField(
                   onChanged: (value){
                     nama_lengkap=value;
                   },
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontFamily: 'Montserrat',
                     color: Colors.white,
                   ),
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'NAMA LENGKAP',
                     labelStyle: TextStyle(
                       fontFamily: 'Montserrat',
@@ -190,18 +192,18 @@ class _MyHomePageState extends State<MyHomePage> {
                     )
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20.0,
                 ),
                 TextFormField(
                   onChanged: (value){
                     nomor_telefon=value;
                   },
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontFamily: 'Montserrat',
                     color: Colors.white,
                   ),
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'NOMOR TELEFON',
                     labelStyle: TextStyle(
                       fontFamily: 'Montserrat',
@@ -213,13 +215,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     )
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20.0,
                 ),
               ],)
           ),
-            Container(
-            child: ElevatedButton(
+            ElevatedButton(
               onPressed: () async{
                 if (_regFormKey.currentState!.validate()){
                   final response = await http.post(
@@ -249,33 +250,32 @@ class _MyHomePageState extends State<MyHomePage> {
                       }
                 }
               },
-              child: Text("REGISTER"),
+              child: const Text("REGISTER"),
                   style: ElevatedButton.styleFrom(
                     primary: Colors.green,
                     alignment: Alignment.center,
-                    shape: StadiumBorder(),
-                    padding: EdgeInsets.all(15),
+                    shape: const StadiumBorder(),
+                    padding: const EdgeInsets.all(15),
                   ),
 
 
             ),
-        ),
-        SizedBox(height: 50.0),
+        const SizedBox(height: 50.0),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
+            const Text(
               'Not A Teacher?',
               style: TextStyle(
                 fontFamily: 'Montserrat', color: Colors.white
               ),
             ),
-            SizedBox(width: 1.0,),
+            const SizedBox(width: 1.0,),
             InkWell(
               onTap: () {
                 Navigator.of(context).pushNamed('/signup');
               },
-              child: Text('Register Murid',
+              child: const Text('Register Murid',
               style: TextStyle(
                 color: Colors.green,
                 fontFamily: 'Montserrat',
