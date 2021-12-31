@@ -80,9 +80,9 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
   bool agree = false;
 
   bool _isNumeric(String result) {
-    if (result == null) {
-      return false;
-    }
+    // if (result == null) {
+    //   return false;
+    // }
     return double.tryParse(result) != null;
   }
 
@@ -90,7 +90,7 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("BIMBOL"),
+          title: const Text("BIMBOL"),
           centerTitle: true,
         ),
         body: Container(
@@ -103,11 +103,11 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      SizedBox(height: 10),
-                      Text(
+                      const SizedBox(height: 10),
+                      const Text(
                         "Registration\nStudent",
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 40,
                         ),
@@ -116,7 +116,7 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(height: 40),
+                          const SizedBox(height: 40),
                           Text("Username*",
                               textAlign: TextAlign.left,
                               style: TextStyle(color: Colors.white54)),
