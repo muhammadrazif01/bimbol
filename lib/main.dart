@@ -65,7 +65,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     jadwal.JadwalPage(),
 
     // booking
-    booking.ListPage();
+    booking.ListPage(),
 
     forum.ForumRoot(),
 
