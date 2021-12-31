@@ -4,8 +4,7 @@ import 'package:intl/intl.dart';
 
 // ignore: must_be_immutable
 class EditJadwal extends StatelessWidget {
-  // const EditJadwal({Key? key}) : super(key: key);
-  final String id; //INISIASI VARIABLE ID;
+  final String id;
   JadwalModel j;
   EditJadwal({Key? key, required this.id, required this.j}) : super(key: key);
 
@@ -21,11 +20,9 @@ class EditJadwal extends StatelessWidget {
   }
 }
 
-// Create a Form widget.
 // ignore: must_be_immutable
 class EditJadwalForm extends StatefulWidget {
-  // const EditJadwalForm({Key? key}) : super(key: key);
-  final String id; //INISIASI VARIABLE ID;
+  final String id;
   JadwalModel j;
   EditJadwalForm(this.id, this.j, {Key? key}) : super(key: key);
 
@@ -35,17 +32,9 @@ class EditJadwalForm extends StatefulWidget {
   }
 }
 
-// Create a corresponding State class.
-// This class holds data related to the form.
 class EditJadwalFormState extends State<EditJadwalForm> {
-  // Create a global key that uniquely identifies the Form widget
-  // and allows validation of the form.
-  //
-  // Note: This is a GlobalKey<FormState>,
-  // not a GlobalKey<EditJadwalFormState>.
   final _formKey = GlobalKey<FormState>();
   final TextEditingController nama = TextEditingController();
-  // final TextEditingController kelas = TextEditingController();
   late String kelas;
   late String hari;
   final TextEditingController link = TextEditingController();
@@ -56,30 +45,6 @@ class EditJadwalFormState extends State<EditJadwalForm> {
 
   @override
   void initState() {
-    //BUAT DELAY
-    // Future.delayed(Duration.zero, () {
-    //   //MENJALANKAN FUNGSI FINDEMPLOYEE UNTUK MENCARI DATA EMPLOYEE BERDASARKAN IDNYA
-    //   //CARA MENGAKSES ID DARI CONSTRUCTOR PADA STATEFUL WIDGET ADALAH
-    //  //WIDGET DOT DAN DIIKUTI DENGAN VARIABLE YANG INGIN DIAKSES
-    //   var response = JadwalUtils().findJadwal(widget.id).then((response) {
-    //     //JIKA DITEMUKAN, MAKA DATA TERUS KITA MASUKKAN KE DALAM VARIABLE CONTROLLER UNTUK TEKS FIELD
-    //     nama.text = response.nama;
-    //     kelas = response.kelas;
-    //     hari = response.hari;
-    //     link.text = response.link;
-    //     start.text = response.start;
-    //     end.text = response.end;
-    //     desc.text = response.desc;
-    //     print(kelas);
-    //     // kelass.text = response.kelas;
-    //     setState(() {
-    //                 kelas = "11";
-    //               });
-    //   });
-    // });
-    // print(kelas);
-    // var response = JadwalUtils().findJadwal(widget.id).then((response) {
-    //     //JIKA DITEMUKAN, MAKA DATA TERUS KITA MASUKKAN KE DALAM VARIABLE CONTROLLER UNTUK TEKS FIELD
     nama.text = widget.j.nama;
     kelas = widget.j.kelas;
     hari = widget.j.hari;
@@ -87,8 +52,6 @@ class EditJadwalFormState extends State<EditJadwalForm> {
     start.text = widget.j.start;
     end.text = widget.j.end;
     desc.text = widget.j.desc;
-    //   });
-    //   print(kelas);
     super.initState();
   }
 
@@ -98,12 +61,10 @@ class EditJadwalFormState extends State<EditJadwalForm> {
         _isLoading = true;
       });
       JadwalUtils()
-          .putJadwal(widget.id, nama.text, kelas, hari, link.text, start.text, end.text,
-              desc.text)
+          .putJadwal(widget.id, nama.text, kelas, hari, link.text, start.text,
+              end.text, desc.text)
           .then((res) {
         if (res) {
-          // Navigator.of(context).pushAndRemoveUntil(
-          //     MaterialPageRoute(builder: (context) => Employee()), (route) => false);
           Navigator.pop(context, true);
         } else {
           setState(() {
@@ -132,7 +93,6 @@ class EditJadwalFormState extends State<EditJadwalForm> {
 
   @override
   Widget build(BuildContext context) {
-    // Build a Form widget using the _formKey created above.
     return Form(
         key: _formKey,
         child: ListView(
@@ -140,11 +100,7 @@ class EditJadwalFormState extends State<EditJadwalForm> {
             TextFormField(
               controller: nama,
               decoration: const InputDecoration(
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.pinkAccent,
-                  ),
-                ),
+                
                 labelText: 'Nama Jadwal',
                 labelStyle: TextStyle(color: Colors.white70),
               ),
@@ -165,6 +121,7 @@ class EditJadwalFormState extends State<EditJadwalForm> {
                       labelText: 'Kelas',
                       labelStyle: TextStyle(color: Colors.white70)),
                   style: const TextStyle(color: Colors.white70),
+                  value: kelas,
                   validator: (value) {
                     if (value == null) {
                       return 'Kelas tidak boleh kosong';
@@ -187,6 +144,7 @@ class EditJadwalFormState extends State<EditJadwalForm> {
                       labelText: 'Hari',
                       labelStyle: TextStyle(color: Colors.white70)),
                   style: const TextStyle(color: Colors.white70),
+                  value: hari,
                   validator: (value) {
                     if (value == null) {
                       return 'Hari tidak boleh kosong';
@@ -202,10 +160,12 @@ class EditJadwalFormState extends State<EditJadwalForm> {
             ),
             TextFormField(
               controller: start,
-              decoration: const InputDecoration(labelText: "Jam Mulai", labelStyle: TextStyle(color: Colors.white70),),
+              decoration: const InputDecoration(
+                labelText: "Jam Mulai",
+                labelStyle: TextStyle(color: Colors.white70),
+              ),
               style: const TextStyle(color: Colors.white70),
-              readOnly:
-                  true, //set it true, so that user will not able to edit text
+              readOnly: true,
               onTap: () async {
                 final TimeOfDay? pickedTime = await showTimePicker(
                     context: context,
@@ -218,17 +178,13 @@ class EditJadwalFormState extends State<EditJadwalForm> {
                     });
 
                 if (pickedTime != null) {
-                  // print(pickedTime.format(context)); //output 10:51 PM
                   DateTime parsedTime = DateFormat.jm()
                       .parse(pickedTime.format(context).toString());
-                  //converting to DateTime so that we can further format on different pattern.
-                  // print(parsedTime); //output 1970-01-01 22:53:00.000
+
                   String formattedTime = DateFormat('HH:mm').format(parsedTime);
-                  // print(formattedTime); //output 14:59:00
-                  //DateFormat() is from intl package, you can format the time on any pattern you need.
 
                   setState(() {
-                    start.text = formattedTime; //set the value of text field.
+                    start.text = formattedTime;
                   });
                 }
               },
@@ -241,10 +197,12 @@ class EditJadwalFormState extends State<EditJadwalForm> {
             ),
             TextFormField(
               controller: end,
-              decoration: const InputDecoration(labelText: "Jam Selesai", labelStyle: TextStyle(color: Colors.white70),),
+              decoration: const InputDecoration(
+                labelText: "Jam Selesai",
+                labelStyle: TextStyle(color: Colors.white70),
+              ),
               style: const TextStyle(color: Colors.white70),
-              readOnly:
-                  true, //set it true, so that user will not able to edit text
+              readOnly: true,
               onTap: () async {
                 final TimeOfDay? pickedTime = await showTimePicker(
                     context: context,
@@ -257,17 +215,13 @@ class EditJadwalFormState extends State<EditJadwalForm> {
                     });
 
                 if (pickedTime != null) {
-                  // print(pickedTime.format(context)); //output 10:51 PM
                   DateTime parsedTime = DateFormat.jm()
                       .parse(pickedTime.format(context).toString());
-                  //converting to DateTime so that we can further format on different pattern.
-                  // print(parsedTime); //output 1970-01-01 22:53:00.000
+
                   String formattedTime = DateFormat('HH:mm').format(parsedTime);
-                  // print(formattedTime); //output 14:59:00
-                  //DateFormat() is from intl package, you can format the time on any pattern you need.
 
                   setState(() {
-                    end.text = formattedTime; //set the value of text field.
+                    end.text = formattedTime;
                   });
                 }
               },
@@ -281,11 +235,7 @@ class EditJadwalFormState extends State<EditJadwalForm> {
             TextFormField(
                 controller: link,
                 decoration: const InputDecoration(
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.pinkAccent,
-                    ),
-                  ),
+                  
                   labelText: 'Link',
                   labelStyle: TextStyle(color: Colors.white70),
                 ),
@@ -305,11 +255,7 @@ class EditJadwalFormState extends State<EditJadwalForm> {
             TextFormField(
               controller: desc,
               decoration: const InputDecoration(
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.pinkAccent,
-                  ),
-                ),
+                
                 labelText: 'Deskripsi',
                 labelStyle: TextStyle(color: Colors.white70),
               ),
@@ -317,14 +263,11 @@ class EditJadwalFormState extends State<EditJadwalForm> {
             ),
             ElevatedButton(
               onPressed: () {
-                // Validate returns true if the form is valid, or false otherwise.
                 if (_formKey.currentState!.validate()) {
-                  // If the form is valid, display a snackbar. In the real world,
-                  // you'd often call a server or save the information in a database.
                   submit(context);
                 }
               },
-              child: const Text('Submit'),
+              child: const Text('Update'),
             ),
           ],
         ));

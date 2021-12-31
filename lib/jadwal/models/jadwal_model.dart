@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import '../../screens/user_session_support.dart';
 
 class JadwalModel {
   String id;
@@ -11,7 +12,6 @@ class JadwalModel {
   String end;
   String desc;
 
-  //BUAT CONSTRUCTOR AGAR KETIKA CLASS INI DILOAD, MAKA DATA YANG DIMINTA HARUS DIPASSING SESUAI TIPE DATA YANG DITETAPKAN
   JadwalModel({
     required this.id,
     required this.nama,
@@ -23,7 +23,6 @@ class JadwalModel {
     required this.desc,
   });
 
-  //FUNGSI INI UNTUK MENGUBAH FORMAT DATA DARI JSON KE FORMAT YANG SESUAI DENGAN EMPLOYEE MODEL
   factory JadwalModel.fromJson(Map<String, dynamic> json) => JadwalModel(
         id: json['id'].toString(),
         nama: json['title'].toString(),
@@ -39,37 +38,36 @@ class JadwalModel {
 class JadwalUtils {
   List<JadwalModel> _data = [];
   List<JadwalModel> get dataJadwal => _data;
+  static bool isGuru = false;
 
   Future<List<JadwalModel>> connectAPI() async {
-    String url = "https://tk-pbp-a01.herokuapp.com/jadwal/api/get/";
+    var username = user[0]['username'];
+    if (username == null) {
+      return _data;
+    }
+
+    String url =
+        "https://tk-pbp-a01.herokuapp.com/jadwal/api/get/username/$username/";
     var response = await http.get(Uri.parse(url));
     // print(response.body);
-    var jsonObject = json.decode(response.body).cast<Map<String, dynamic>>();
-    _data = jsonObject
-        .map<JadwalModel>((json) => JadwalModel.fromJson(json))
-        .toList();
-    // print(_data);
-    //   var tmp = JadwalModel(
-    //   id: jsonObject[0]['pk'].toString(),
-    //   nama: jsonObject[0]['fields']['title'].toString(),
-    //   kelas: jsonObject[0]['fields']['kelas'].toString(),
-    //   hari: jsonObject[0]['fields']['day'].toString(),
-    //   link: jsonObject[0]['fields']['link'].toString()
-    // );
-    // print(tmp);
-    return _data;
-
-    // return JadwalModel.fromJson(jsonObject);
-    // final result = json.decode(response.body)['data'].cast<Map<String, dynamic>>();
-    // print(result);
-    //KEMUDIAN MAPPING DATANYA UNTUK KEMUDIAN DIUBAH FORMATNYA SESUAI DENGAN EMPLOYEEMODEL DAN DIPASSING KE DALAM VARIABLE _DATA
-    // return result.map<JadwalModel>((json) => JadwalModel.fromJson(json)).toList();
+    if (response.statusCode == 200) {
+      var jsonObject = json.decode(response.body).cast<Map<String, dynamic>>();
+      _data = jsonObject
+          .map<JadwalModel>((json) => JadwalModel.fromJson(json))
+          .toList();
+      isGuru = true;
+      return _data;
+    }
+    return _data; //data kosong
   }
 
   Future<bool> postJadwal(String nama, String kelas, String hari, String link,
-    String start, String end, String desc) async {
+      String start, String end, String desc) async {
+    var username = user[0]['username'];
+    if (username == null) {
+      return false;
+    }
     const url = 'https://tk-pbp-a01.herokuapp.com/jadwal/api/create/';
-    //KIRIM REQUEST KE SERVER DENGAN MENGIRIMKAN DATA YANG AKAN DITAMBAHKAN PADA BODY
     final response = await http.post(Uri.parse(url), body: {
       "day": hari,
       "start": start,
@@ -78,13 +76,9 @@ class JadwalUtils {
       "kelas": kelas,
       "title": nama,
       "desc": desc,
-      "guru": "1" //user.request
+      "guru": username, //user.request
     });
 
-    //DECODE RESPONSE YANG DITERIMA
-
-    // print(result);
-    //LAKUKAN PENGECEKAN, JIKA STATUS CODENYA 200 DAN STATUS SUCCESS
     if (response.statusCode == 201) {
       return true;
     }
@@ -99,10 +93,13 @@ class JadwalUtils {
     return data;
   }
 
-  Future<bool> putJadwal(String id, String nama, String kelas, String hari, String link,
-      String start, String end, String desc) async {
+  Future<bool> putJadwal(String id, String nama, String kelas, String hari,
+      String link, String start, String end, String desc) async {
+    var username = user[0]['username'];
+    if (username == null) {
+      return false;
+    }
     final url = 'https://tk-pbp-a01.herokuapp.com/jadwal/api/update/$id/';
-    //KIRIM REQUEST KE SERVER DENGAN MENGIRIMKAN DATA YANG AKAN DITAMBAHKAN PADA BODY
     final response = await http.post(Uri.parse(url), body: {
       "day": hari,
       "start": start,
@@ -111,13 +108,9 @@ class JadwalUtils {
       "kelas": kelas,
       "title": nama,
       "desc": desc,
-      "guru": "1" //user.request
+      "guru": username //user.request
     });
 
-    //DECODE RESPONSE YANG DITERIMA
-
-    // print(result);
-    //LAKUKAN PENGECEKAN, JIKA STATUS CODENYA 200 DAN STATUS SUCCESS
     if (response.statusCode == 201) {
       return true;
     }
