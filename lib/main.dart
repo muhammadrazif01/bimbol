@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Raleway',
         primaryColor: const Color(0xff171941),
         secondaryHeaderColor: const Color(0xffe14eca),
+        unselectedWidgetColor: Colors.white54,
       ),
 
 
