@@ -117,31 +117,31 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const SizedBox(height: 40),
-                          Text("Username*",
+                          const Text("Username*",
                               textAlign: TextAlign.left,
-                              style: TextStyle(color: Colors.white54)),
-                          SizedBox(height: 10),
+                              style: const TextStyle(color: Colors.white54)),
+                          const SizedBox(height: 10),
                           TextFormField(
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                             onChanged: (String value) {
                               username = value;
                             },
                             decoration: InputDecoration(
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.purple, width: 2),
+                              focusedBorder: const UnderlineInputBorder(
+                                borderSide: const BorderSide(
+                                    color: Colors.purple, width: 2),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15.0),
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Colors.white54,
                                 ),
                               ),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
                                   borderSide:
-                                      BorderSide(color: Colors.white54)),
-                              prefixIcon: Icon(
+                                      const BorderSide(color: Colors.white54)),
+                              prefixIcon: const Icon(
                                 Icons.person,
                                 color: Colors.white54,
                               ),
@@ -153,32 +153,32 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                               return null;
                             },
                           ),
-                          SizedBox(height: 30),
-                          Text("Fullname*",
+                          const SizedBox(height: 30),
+                          const Text("Fullname*",
                               textAlign: TextAlign.left,
-                              style: TextStyle(color: Colors.white54)),
-                          SizedBox(height: 10),
+                              style: const TextStyle(color: Colors.white54)),
+                          const SizedBox(height: 10),
                           TextFormField(
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                             onChanged: (String value) {
                               name = value;
                             },
                             decoration: InputDecoration(
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.purple, width: 2),
+                              focusedBorder: const UnderlineInputBorder(
+                                borderSide: const BorderSide(
+                                    color: Colors.purple, width: 2),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15.0),
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Colors.white54,
                                 ),
                               ),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
                                   borderSide:
-                                      BorderSide(color: Colors.white54)),
-                              prefixIcon: Icon(
+                                      const BorderSide(color: Colors.white54)),
+                              prefixIcon: const Icon(
                                 Icons.person,
                                 color: Colors.white54,
                               ),
@@ -190,32 +190,32 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                               return null;
                             },
                           ),
-                          SizedBox(height: 30),
-                          Text("Email*",
+                          const SizedBox(height: 30),
+                          const Text("Email*",
                               textAlign: TextAlign.left,
-                              style: TextStyle(color: Colors.white54)),
-                          SizedBox(height: 10),
+                              style: const TextStyle(color: Colors.white54)),
+                          const SizedBox(height: 10),
                           TextFormField(
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                             onChanged: (String value) {
                               email = value;
                             },
                             decoration: InputDecoration(
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.purple, width: 2),
+                              focusedBorder: const UnderlineInputBorder(
+                                borderSide: const BorderSide(
+                                    color: Colors.purple, width: 2),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15.0),
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Colors.white54,
                                 ),
                               ),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
                                   borderSide:
-                                      BorderSide(color: Colors.white54)),
-                              prefixIcon: Icon(
+                                      const BorderSide(color: Colors.white54)),
+                              prefixIcon: const Icon(
                                 Icons.mail,
                                 color: Colors.white54,
                               ),
@@ -229,33 +229,33 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                               return null;
                             },
                           ),
-                          SizedBox(height: 30),
-                          Text("Password*",
+                          const SizedBox(height: 30),
+                          const Text("Password*",
                               textAlign: TextAlign.left,
-                              style: TextStyle(color: Colors.white54)),
-                          SizedBox(height: 10),
+                              style: const TextStyle(color: Colors.white54)),
+                          const SizedBox(height: 10),
                           TextFormField(
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                             obscureText: true,
                             onChanged: (String value) {
                               password1 = value;
                             },
                             decoration: InputDecoration(
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.purple, width: 2),
+                              focusedBorder: const UnderlineInputBorder(
+                                borderSide: const BorderSide(
+                                    color: Colors.purple, width: 2),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15.0),
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Colors.white54,
                                 ),
                               ),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
                                   borderSide:
-                                      BorderSide(color: Colors.white54)),
-                              prefixIcon: Icon(
+                                      const BorderSide(color: Colors.white54)),
+                              prefixIcon: const Icon(
                                 Icons.lock,
                                 color: Colors.white54,
                               ),
@@ -267,33 +267,33 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                               return null;
                             },
                           ),
-                          SizedBox(height: 30),
-                          Text("Password Confirmation*",
+                          const SizedBox(height: 30),
+                          const Text("Password Confirmation*",
                               textAlign: TextAlign.left,
-                              style: TextStyle(color: Colors.white54)),
-                          SizedBox(height: 10),
+                              style: const TextStyle(color: Colors.white54)),
+                          const SizedBox(height: 10),
                           TextFormField(
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                             obscureText: true,
                             onChanged: (String value) {
                               password2 = value;
                             },
                             decoration: InputDecoration(
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.purple, width: 2),
+                              focusedBorder: const UnderlineInputBorder(
+                                borderSide: const BorderSide(
+                                    color: Colors.purple, width: 2),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15.0),
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Colors.white54,
                                 ),
                               ),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
                                   borderSide:
-                                      BorderSide(color: Colors.white54)),
-                              prefixIcon: Icon(
+                                      const BorderSide(color: Colors.white54)),
+                              prefixIcon: const Icon(
                                 Icons.lock,
                                 color: Colors.white54,
                               ),
@@ -307,18 +307,18 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
                               return null;
                             },
                           ),
-                          SizedBox(height: 30),
-                          Text("Telephone Number*",
+                          const SizedBox(height: 30),
+                          const Text("Telephone Number*",
                               textAlign: TextAlign.left,
-                              style: TextStyle(color: Colors.white54)),
-                          SizedBox(height: 10),
+                              style: const TextStyle(color: Colors.white54)),
+                          const SizedBox(height: 10),
                           TextFormField(
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                             onChanged: (String value) {
                               phone = value;
                             },
                             decoration: InputDecoration(
-                              focusedBorder: UnderlineInputBorder(
+                              focusedBorder: const UnderlineInputBorder(
                                 borderSide:
                                     BorderSide(color: Colors.purple, width: 2),
                               ),
