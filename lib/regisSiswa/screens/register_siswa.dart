@@ -2,26 +2,46 @@ import 'dart:convert';
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:pbpbimbol/regisSiswa/screens/home_siswa.dart';
-import 'package:flutter/gestures.dart';
+import 'package:pbpbimbol/main.dart';
 import 'package:email_validator/email_validator.dart';
-import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 
-Future<http.Response> registSiswa(
-    String username, String email, String pass1, String pass2) {
-  return http.post(
-    Uri.parse("http://127.0.0.1:8000/auth/signup-siswa"),
+Future<http.Response> registFlutter(
+    String email,
+    String username,
+    String pass1,
+    String pass2,
+    String fullname,
+    DateTime birthdate,
+    String gender,
+    String address,
+    bool agree,
+    String grade,
+    List<String> subjects,
+    String payment,
+    String phone) async {
+  final response = await http.post(
+    Uri.parse('https://tk-pbp-a01.herokuapp.com/auth/signup-siswa'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8'
     },
-    body: jsonEncode(<String, String>{
-      'username': username,
+    body: jsonEncode(<dynamic, dynamic>{
       'email': email,
+      'username': username,
       'password1': pass1,
       'password2': pass2,
+      'nama_lengkap': fullname,
+      'tanggal_lahir': birthdate.toString().split(' ')[0],
+      'jenis_kelamin': gender,
+      'alamat': address,
+      'agree': agree.toString(),
+      'kelas': grade,
+      'mata_pelajaran': subjects,
+      'payment': payment,
+      'nomor_telefon': phone,
     }),
   );
+  return response;
 }
 
 class registrasiSiswa extends StatefulWidget {
@@ -59,25 +79,15 @@ class _registrasiSiswaState extends State<registrasiSiswa> {
   String payment = "";
   bool agree = false;
 
-  String _mata_pelajaran = "";
-
-  List<String> mata_pelajaran = [
-    "Matematika",
-    "Fisika",
-    "Biologi",
-    "kimia",
-    "B.Indonesia",
-    "B.Inggris",
-    "Ekonomi",
-    "Geografi",
-    "Sosiologi",
-    "Sejarah"
-  ];
+  bool _isNumeric(String result) {
+    if (result == null) {
+      return false;
+    }
+    return double.tryParse(result) != null;
+  }
 
   @override
   Widget build(BuildContext context) {
-    // final request = context.watch<CookieRequest>();
-
     return Scaffold(
         appBar: AppBar(
           title: Text("BIMBOL"),
@@ -90,8 +100,8 @@ class _registrasiSiswaState extends State<registrasiSiswa> {
               padding: EdgeInsets.all(25),
               child: Form(
                 key: _formKey,
-                child: Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    // crossAxisAlignment: CrossAxisAlignment.start,
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
                       SizedBox(height: 10),
                       Text(
@@ -127,7 +137,6 @@ class _registrasiSiswaState extends State<registrasiSiswa> {
                                   color: Colors.white54,
                                 ),
                               ),
-                              // labelText: "Username*",
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
                                   borderSide:
@@ -137,6 +146,12 @@ class _registrasiSiswaState extends State<registrasiSiswa> {
                                 color: Colors.white54,
                               ),
                             ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Username tidak boleh kosong';
+                              }
+                              return null;
+                            },
                           ),
                           SizedBox(height: 30),
                           Text("Fullname*",
@@ -159,7 +174,6 @@ class _registrasiSiswaState extends State<registrasiSiswa> {
                                   color: Colors.white54,
                                 ),
                               ),
-                              // labelText: "fullname*",
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
                                   borderSide:
@@ -169,6 +183,12 @@ class _registrasiSiswaState extends State<registrasiSiswa> {
                                 color: Colors.white54,
                               ),
                             ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Fullname tidak boleh kosong';
+                              }
+                              return null;
+                            },
                           ),
                           SizedBox(height: 30),
                           Text("Email*",
@@ -191,7 +211,6 @@ class _registrasiSiswaState extends State<registrasiSiswa> {
                                   color: Colors.white54,
                                 ),
                               ),
-                              // labelText: "Email*",
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
                                   borderSide:
@@ -201,6 +220,14 @@ class _registrasiSiswaState extends State<registrasiSiswa> {
                                 color: Colors.white54,
                               ),
                             ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Email tidak boleh kosong';
+                              } else if (!EmailValidator.validate(value)) {
+                                return "Email tidak valid";
+                              }
+                              return null;
+                            },
                           ),
                           SizedBox(height: 30),
                           Text("Password*",
@@ -224,7 +251,6 @@ class _registrasiSiswaState extends State<registrasiSiswa> {
                                   color: Colors.white54,
                                 ),
                               ),
-                              // labelText: "Password*",
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
                                   borderSide:
@@ -234,6 +260,12 @@ class _registrasiSiswaState extends State<registrasiSiswa> {
                                 color: Colors.white54,
                               ),
                             ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Password tidak boleh kosong';
+                              }
+                              return null;
+                            },
                           ),
                           SizedBox(height: 30),
                           Text("Password Confirmation*",
@@ -257,7 +289,6 @@ class _registrasiSiswaState extends State<registrasiSiswa> {
                                   color: Colors.white54,
                                 ),
                               ),
-                              // labelText: "Password Confirmation*",
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
                                   borderSide:
@@ -267,6 +298,14 @@ class _registrasiSiswaState extends State<registrasiSiswa> {
                                 color: Colors.white54,
                               ),
                             ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Password Confirmation tidak boleh kosong';
+                              } else if (value != password1) {
+                                return 'Password tidak sama';
+                              }
+                              return null;
+                            },
                           ),
                           SizedBox(height: 30),
                           Text("Telephone Number*",
@@ -289,7 +328,6 @@ class _registrasiSiswaState extends State<registrasiSiswa> {
                                   color: Colors.white54,
                                 ),
                               ),
-                              // labelText: "Telephone Number*",
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
                                   borderSide:
@@ -299,14 +337,20 @@ class _registrasiSiswaState extends State<registrasiSiswa> {
                                 color: Colors.white54,
                               ),
                             ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Telephone Number tidak boleh kosong';
+                              } else if (_isNumeric(value) == false) {
+                                return "Telephone Number harus berisi numeric";
+                              }
+                              return null;
+                            },
                           ),
                           SizedBox(height: 30),
                           Text("Birthdate*",
                               textAlign: TextAlign.left,
                               style: TextStyle(color: Colors.white54)),
                           SizedBox(height: 10),
-                          // Text("test birthdate"),
-                          // Text(birthdate.toString().split(' ')[0]),
                           ElevatedButton(
                               onPressed: () {
                                 showDatePicker(
@@ -323,7 +367,6 @@ class _registrasiSiswaState extends State<registrasiSiswa> {
                                 );
                               },
                               child: Text("Pick Birthdate")),
-
                           SizedBox(height: 30),
                           Text("Grade*",
                               textAlign: TextAlign.left,
@@ -587,7 +630,6 @@ class _registrasiSiswaState extends State<registrasiSiswa> {
                                   color: Colors.white54,
                                 ),
                               ),
-                              // labelText: "Adress*",
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
                                   borderSide:
@@ -597,14 +639,20 @@ class _registrasiSiswaState extends State<registrasiSiswa> {
                                 color: Colors.white54,
                               ),
                             ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Adress tidak boleh kosong';
+                              }
+                              return null;
+                            },
                           ),
                           SizedBox(height: 30),
                           Text("Gender*",
                               textAlign: TextAlign.left,
                               style: TextStyle(color: Colors.white54)),
                           RadioListTile(
-                              value: "Laki-laki",
-                              title: Text("Laki-laki",
+                              value: "p",
+                              title: Text("Pria",
                                   style: TextStyle(
                                       color: Colors.white54, fontSize: 14)),
                               groupValue: gender,
@@ -614,8 +662,8 @@ class _registrasiSiswaState extends State<registrasiSiswa> {
                                 });
                               }),
                           RadioListTile(
-                              value: "Perempuan",
-                              title: Text("Perempuan",
+                              value: "w",
+                              title: Text("Wanita",
                                   style: TextStyle(
                                       color: Colors.white54, fontSize: 14)),
                               groupValue: gender,
@@ -629,7 +677,7 @@ class _registrasiSiswaState extends State<registrasiSiswa> {
                               textAlign: TextAlign.left,
                               style: TextStyle(color: Colors.white54)),
                           RadioListTile(
-                              value: "Cash",
+                              value: "CASH",
                               title: Text("Cash",
                                   style: TextStyle(
                                       color: Colors.white54, fontSize: 14)),
@@ -640,7 +688,7 @@ class _registrasiSiswaState extends State<registrasiSiswa> {
                                 });
                               }),
                           RadioListTile(
-                              value: "Check",
+                              value: "CHECK",
                               title: Text("Check",
                                   style: TextStyle(
                                       color: Colors.white54, fontSize: 14)),
@@ -651,7 +699,7 @@ class _registrasiSiswaState extends State<registrasiSiswa> {
                                 });
                               }),
                           RadioListTile(
-                              value: "Card",
+                              value: "CARD",
                               title: Text("Card",
                                   style: TextStyle(
                                       color: Colors.white54, fontSize: 14)),
@@ -689,10 +737,41 @@ class _registrasiSiswaState extends State<registrasiSiswa> {
                             children: <Widget>[
                               ElevatedButton(
                                   onPressed: () {
-                                    Navigator.push(context,
-                                        MaterialPageRoute(builder: (context) {
-                                      return homeSiswa();
-                                    }));
+                                    final form = _formKey.currentState!;
+                                    // Validate returns true if the form is valid, or false otherwise.
+                                    if (_formKey.currentState!.validate()) {
+                                      // If the form is valid, display a snackbar. In the real world,
+                                      // you'd often call a server or save the information in a database.
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        const SnackBar(
+                                            content: Text('Processing Data')),
+                                      );
+
+                                      form.save();
+
+                                      registFlutter(
+                                              email,
+                                              username,
+                                              password1,
+                                              password2,
+                                              name,
+                                              birthdate,
+                                              gender,
+                                              address,
+                                              agree,
+                                              grade,
+                                              subjects,
+                                              payment,
+                                              phone)
+                                          .then((value) {
+                                        Navigator.push(context,
+                                            MaterialPageRoute(
+                                                builder: (context) {
+                                          return MyStatefulWidget();
+                                        }));
+                                      });
+                                    }
                                   },
                                   child: Text('Get Started',
                                       style: TextStyle(fontSize: 15)),

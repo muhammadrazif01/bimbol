@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Raleway',
         primaryColor: const Color(0xff171941),
         secondaryHeaderColor: const Color(0xffe14eca),
+        unselectedWidgetColor: Colors.white54,
       ),
 
       // Set home untuk constructor MyStatefulWidget()
@@ -94,32 +95,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       // Set bg color
       backgroundColor: Colors.purple[300],
 
-      body: Container(
-          padding: const EdgeInsets.all(12),
-          child: Stack(fit: StackFit.expand, children: [
-            buildBackground(),
-            Center(
-              child: buildCenterText(),
-            ),
-            Align(
-              alignment: const Alignment(0.0, 1),
-              child: buildLikeFB(),
-            ),
-            Positioned(
-              right: 8,
-              top: 4,
-              child: buildLogo(),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return registrasiSiswa();
-                }));
-              },
-              child: Text('Get Started'),
-            ),
-          ])),
-
       // Set body (sebagian dari kode ini terinspirasi oleh https://youtu.be/4wS5LdXJgEA)
       // body: Container(
       //     padding: const EdgeInsets.all(12),
@@ -139,7 +114,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       //       ),
       //     ])),
 
-      // body: _widgetOptions[_selectedIndex],
+      body: _widgetOptions[_selectedIndex],
 
       // Set untuk navbar (sebagian dari kode ini didapat dari Flutter API)
       bottomNavigationBar: BottomNavigationBar(
