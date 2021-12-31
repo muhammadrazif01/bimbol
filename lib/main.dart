@@ -4,6 +4,7 @@ import 'forum/screens/root.dart' as forum;
 import 'screens/homepage.dart' as homepage;
 import 'screens/screen_for_login.dart' as loginpage;
 import 'regisSiswa/screens/regis_siswa.dart' as regissiswa;
+import 'jadwal/screens/jadwal.dart' as jadwal;
 
 // run MyApp as main function
 void main() => runApp(const MyApp());
@@ -60,10 +61,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     loginpage.LoginScreen(),
 
     // jadwal
-    Text(
-      'Untuk halaman jadwal (not implemented yet here)',
-      style: TextStyle(color: Colors.white),
-    ),
+    jadwal.JadwalPage(),
 
     // booking
     Text(
