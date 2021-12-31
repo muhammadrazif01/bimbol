@@ -6,7 +6,7 @@ import 'package:pbpbimbol/main.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:http/http.dart' as http;
 
-Future<http.Response> regist_flutter(
+Future<http.Response> registFlutter(
     String email,
     String username,
     String pass1,
@@ -710,7 +710,7 @@ class _RegistrasiSiswaState extends State<RegistrasiSiswa> {
 
                                       form.save();
 
-                                      regist_flutter(
+                                      registFlutter(
                                               email,
                                               username,
                                               password1,
