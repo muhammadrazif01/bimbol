@@ -16,8 +16,6 @@ class MyBookingPage extends StatefulWidget {
 class MyBookingPageState extends State<MyBookingPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  // final List guru = ["Mohammad Bryan Mahdavikhia",
-  // "Emma Watson","Raisa Andriana"];
   final List guru = ListPageState.listGuru;
 
   String input = "";
@@ -27,8 +25,9 @@ class MyBookingPageState extends State<MyBookingPage> {
     return Scaffold(
         appBar: AppBar(
           title: const Text("Booking Form"),
-          backgroundColor: Colors.teal[800],
+          // backgroundColor: Colors.teal[800],
         ),
+        backgroundColor: const Color(0xff171941),
         body: Form(
           key: _formKey,
           child: Column(
@@ -40,6 +39,8 @@ class MyBookingPageState extends State<MyBookingPage> {
                   contentPadding: EdgeInsets.fromLTRB(5, 5, 5, 0),
                   hintText: 'Use Capital',
                   labelText: 'Teacher *',
+                  fillColor: Colors.white,
+                  
                 ),
                 // The validator receives the text that the user has entered.
                 validator: (value) {
