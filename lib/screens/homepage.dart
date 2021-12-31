@@ -21,7 +21,7 @@ class _MyHomePageState extends State<HomePage> {
       backgroundColor: Colors.purple[300],
 
       body: Container(
-          padding: EdgeInsets.all(12),
+          padding: const EdgeInsets.all(12),
           child: Stack(
               fit: StackFit.expand,
               children: [

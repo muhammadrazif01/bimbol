@@ -1,14 +1,10 @@
 // import package and library needed
 import 'package:flutter/material.dart';
-import 'package:flutter/gestures.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 // import supporting files for login
-import '../../main.dart' as main;
 import 'user_session_support.dart' as user;
-import '../screens/homepage.dart' as homepage;
-import '../screens/homepage.dart' as logout;
 
 // create a login screen class
 class LoginScreen extends StatefulWidget {
@@ -118,11 +114,29 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(height: 65),
 
                     // create container for login button
-                    Container(
-                      child: TextButton(
+                    TextButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(Colors.purple),
+                        foregroundColor: MaterialStateProperty.all<Color>(Colors.white)),
+                      onPressed: () async {
+                        if (_loginKey.currentState!.validate()) {
+                          final response = await http.post(Uri.parse("https://tk-pbp-a01.herokuapp.com/jsonApp"),
+                              headers: <String, String>{'Content-Type': 'application/json;charset=UTF-8'},
+                              body: jsonEncode(<String, String>{'username': username, 'password': password}));
+                          dynamic jsondata = await jsonDecode(response.body);
+                          if (jsondata["session"] == "logged in") {
+                            user.user.insert(0, jsondata);
+                          }
+                        }
+                      },
+                      child: const Text("Masuk", style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20))),
+                    const SizedBox(height: 12),
+
+                    // create container for logout botton
+                    TextButton(
                         style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(Colors.purple),
-                          foregroundColor: MaterialStateProperty.all<Color>(Colors.white)),
+                            backgroundColor: MaterialStateProperty.all<Color>(Colors.purple),
+                            foregroundColor: MaterialStateProperty.all<Color>(Colors.white)),
                         onPressed: () async {
                           if (_loginKey.currentState!.validate()) {
                             final response = await http.post(Uri.parse("https://tk-pbp-a01.herokuapp.com/jsonApp"),
@@ -130,33 +144,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                 body: jsonEncode(<String, String>{'username': username, 'password': password}));
                             dynamic jsondata = await jsonDecode(response.body);
                             if (jsondata["session"] == "logged in") {
-                              user.user.insert(0, jsondata);
-                              print("Berhasil masuk!");
+                              user.user.insert(0, {'status': "not logged in"});
                             }
                           }
                         },
-                        child: const Text("Masuk", style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20)))),
-                    const SizedBox(height: 12),
-
-                    // create container for logout botton
-                    Container(
-                        child: TextButton(
-                            style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all<Color>(Colors.purple),
-                                foregroundColor: MaterialStateProperty.all<Color>(Colors.white)),
-                            onPressed: () async {
-                              if (_loginKey.currentState!.validate()) {
-                                final response = await http.post(Uri.parse("https://tk-pbp-a01.herokuapp.com/jsonApp"),
-                                    headers: <String, String>{'Content-Type': 'application/json;charset=UTF-8'},
-                                    body: jsonEncode(<String, String>{'username': username, 'password': password}));
-                                dynamic jsondata = await jsonDecode(response.body);
-                                if (jsondata["session"] == "logged in") {
-                                  user.user.insert(0, {'status': "not logged in"});
-                                  print("Berhasil keluar!");
-                                }
-                              }
-                            },
-                            child: const Text("Keluar", style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20)))),
+                        child: const Text("Keluar", style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20))),
                   ],
                 ),
               ),
